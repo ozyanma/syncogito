@@ -745,7 +745,7 @@ const pagesData = [
         "pageScenarios": {
             "start": [
                 {
-                    "text": "なんかポッドキャストで喋った気がするな…",
+                    "text": "なんかこの辺の話題、ポッドキャストで喋った気がするな…",
                     "next": "info"
                 },
                 {
@@ -1015,7 +1015,7 @@ const pagesData = [
         "desc": "",
         "secret": true,
         "level": 2,
-        "content": "\n    <div class=\"secret-content rich-content\">\n        <h2 style='margin-top:0;'>『ひまみなもの好き放題ラジオ』書き起こし</h2>\n        <p style=\"color: #888; font-size: 0.9rem; margin-bottom: 20px;\">\n            ※対象者の日常会話ログから、ターゲティング広告（プロジェクト『Vocal-Sync』導入用）に有効なキーワードを抽出するための解析用書き起こし。\n        </p>\n        <hr style=\"border-color: #333; margin: 20px 0;\">\n        \n        <div style=\"line-height: 1.8;\">\n            <p><strong>ゆりかっぺ：</strong>「ねえねえ、まじめちゃん！ 最近『オートファジー』って知ってる？ 16時間食べないだけで、細胞が自分を掃除して勝手に痩せるんだって！ これ、絶対やるしかないと思わない？」</p>\n            \n            <p><strong>まじめちゃん：</strong>「また始まった……。それ、科学的な根拠はあっても極端なやり方は体に良くないって言われてるやつでしょ」</p>\n            \n            <p><strong>ゆりかっぺ：</strong>「えー、でも実際に痩せた人いっぱいいるし！ あとね、最近ゲームしてるのも、実は『動体視力が上がる』っていう健康法なんだよ。「モンスターハンティング」とかしてると脳が活性化して、反射神経が若返るらしいの！」</p>\n            \n            <p><strong>まじめちゃん：</strong>「……ゆりかっぺ、健康都市伝説好きすぎない？ ネットで見た怪しい情報をすぐ信じるのは、君の悪い癖だよ」</p>\n            \n            <p><strong>ゆりかっぺ：</strong>「都市伝説じゃないもん！ 実際にやってみて、なんとなく集中力上がった気がするし。耳鳴りとかも、実は脳が進化してるサインかもー、なんてね（笑）」</p>\n            \n            <p><strong>まじめちゃん：</strong>「耳鳴りはただの疲れでしょ。ちゃんと寝なよ……」</p>\n        </div>\n        \n        <hr style=\"border-color: #333; margin: 20px 0;\">\n        <p style=\"color: #7ec8e3; font-weight: bold;\">【解析結果：キーワード抽出】</p>\n        <ul style=\"color: #ccc;\">\n            <li>健康都市伝説</li>\n            <li>オートファジー</li>\n            <li>動体視力向上</li>\n            <li>反射神経 若返り</li>\n            <li>耳鳴り 解消 / 意味</li>\n            <li>集中力アップ</li>\n        </ul>\n        \n    </div>\n",
+        "content": "\n    <div class=\"secret-content rich-content\">\n        <h2 style='margin-top:0;'>『ひまみなもの好き放題ラジオ』書き起こし</h2>\n        <p style=\"color: #888; font-size: 0.9rem; margin-bottom: 20px;\">\n            ※対象者の日常会話ログから、ターゲティング広告に有効なキーワードを抽出するための解析用書き起こし。\n        </p>\n        <hr style=\"border-color: #333; margin: 20px 0;\">\n        \n        <div style=\"line-height: 1.8;\">\n            <p><strong>ゆりかっぺ：</strong>「ねえねえ、まじめちゃん！ 最近『オートファジー』って知ってる？ 16時間食べないだけで、細胞が自分を掃除して勝手に痩せるんだって！ これ、絶対やるしかないと思わない？」</p>\n            \n            <p><strong>まじめちゃん：</strong>「また始まった……。それ、科学的な根拠はあっても極端なやり方は体に良くないって言われてるやつでしょ」</p>\n            \n            <p><strong>ゆりかっぺ：</strong>「えー、でも実際に痩せた人いっぱいいるし！ あとね、最近ゲームしてるのも、実は『動体視力が上がる』っていう健康法なんだよ。「モンスターハンティング」とかしてると脳が活性化して、反射神経が若返るらしいの！」</p>\n            \n            <p><strong>まじめちゃん：</strong>「……ゆりかっぺ、健康都市伝説好きすぎない？ ネットで見た怪しい情報をすぐ信じるのは、君の悪い癖だよ」</p>\n            \n            <p><strong>ゆりかっぺ：</strong>「都市伝説じゃないもん！ 実際にやってみて、なんとなく集中力上がった気がするし。耳鳴りとかも、実は脳が進化してるサインかもー、なんてね（笑）」</p>\n            \n            <p><strong>まじめちゃん：</strong>「耳鳴りはただの疲れでしょ。ちゃんと寝なよ……」</p>\n        </div>\n        \n        <hr style=\"border-color: #333; margin: 20px 0;\">\n        <p style=\"color: #7ec8e3; font-weight: bold;\">【解析結果：キーワード抽出】</p>\n        <ul style=\"color: #ccc;\">\n            <li>健康都市伝説</li>\n            <li>オートファジー</li>\n            <li>動体視力向上</li>\n            <li>反射神経 若返り</li>\n            <li>耳鳴り 解消 / 意味</li>\n            <li>集中力アップ</li>\n        </ul>\n        \n    </div>\n",
         "pageScenarios": {
             "start": [
                 {
