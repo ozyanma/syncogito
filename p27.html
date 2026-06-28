@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>用語解説：AGI | シン・コギト株式会社</title>
+    <style>
+        :root { 
+            --corp-blue: #0056b3; 
+            --chat-bg: #121212; 
+            --yu-pink: #ffb6c1; 
+            
+            /* Secret Mode Colors */
+            --secret-bg: #050505;
+            --secret-text: #e0e0e0;
+            --secret-accent: #20c20e;
+        }
+        body { margin: 0; display: flex; height: 100vh; font-family: sans-serif; overflow: hidden; }
+        #web-site { width: 65%; overflow-y: auto; background: #fff; color: #333; display: flex; flex-direction: column;}
+        #content-body { padding: 40px; }
+        
+        #chat-window { width: 35%; background: var(--chat-bg); color: white; display: flex; flex-direction: column; border-left: 2px solid #222; }
+        .chat-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #1a1a1a; border-bottom: 1px solid #333; font-size: 0.85rem; }
+        .btn-clear { background: #444; color: #fff; border: 1px solid #666; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; }
+        .btn-clear:hover { background: #ff4444; border-color: #ff4444; }
+        #chat-log { flex-grow: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .msg { padding: 12px 16px; border-radius: 12px; max-width: 85%; font-size: 0.9rem; }
+        .yu { background: #2a2a2a; color: var(--yu-pink); align-self: flex-start; }
+        .me { background: var(--corp-blue); color: white; align-self: flex-end; }
+        
+        #options-area { padding: 20px; background: #1a1a1a; border-top: 1px solid #333; display: flex; flex-direction: column; gap: 10px; }
+        button.opt { background: #222; border: 1px solid #555; color: #ddd; padding: 12px; cursor: pointer; border-radius: 6px; text-align: left; }
+        button.opt:hover { background: #333; border-color: var(--yu-pink); color: white; }
+        button.opt:disabled { background: #1a1a1a; border-color: #333; color: #555; cursor: default; }
+
+        header { padding: 15px 30px; border-bottom: 1px solid #eaeaea; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-mark { font-size: 2rem; color: var(--corp-blue); font-weight: 900; letter-spacing: -2px; }
+        .logo-text { font-size: 1.2rem; font-weight: bold; color: #111; line-height: 1.2; }
+        .logo-sub { font-size: 0.7rem; color: #666; font-weight: normal; }
+        .search-container { display: flex; align-items: center; border: 1px solid #ccc; border-radius: 4px; overflow: hidden; }
+        .search-container input { border: none; padding: 8px 12px; outline: none; width: 200px; font-size: 0.85rem; color: #000; }
+        .search-container button { background: white; border: none; padding: 8px 12px; cursor: pointer; color: #555; }
+        .global-nav { display: flex; justify-content: space-between; padding: 0 20px; font-size: 0.85rem; font-weight: bold; color: #444; }
+        .global-nav a { text-decoration: none; color: inherit; padding: 5px 10px; }
+        
+        /* -------------------------------------------
+           Normal (Public) Content Styles
+        ------------------------------------------- */
+        .public-content h2, .public-content h3 { color: var(--corp-blue); border-bottom: 1px solid #eaeaea; padding-bottom:10px; }
+        .public-content p { line-height: 2.0; margin-bottom: 20px; }
+        .prof-img { width:250px; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .prof-img.left { float:left; margin: 0 20px 20px 0; }
+        .corp-table { width:100%; border-collapse:collapse; margin-bottom:30px; }
+        .corp-table th, .corp-table td { border:1px solid #eaeaea; padding:12px; }
+        .corp-table th { background:#f9f9f9; width:25%; }
+        .news-list p { border-bottom:1px solid #eee; padding-bottom:15px; }
+        .news-list .date { color: var(--corp-blue); font-weight:bold; }
+        .member-card { display:flex; gap:20px; border-bottom:1px solid #eee; padding-bottom:20px; margin-bottom:20px; }
+        .member-card img { width:120px; height: 120px; border-radius:50%; object-fit:cover; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .maintenance-box { border:1px solid #e74c3c; color:#e74c3c; padding:15px; border-radius:5px; font-size:0.9rem; }
+        .error-msg { color:#e74c3c; font-weight:bold; font-size:1.1rem; }
+        .internal-memo { color:#777; border-top:1px dashed #ccc; padding-top:15px; margin-top:30px; }
+        .signature { text-align:right; font-weight:bold; color:var(--corp-blue); margin-top:20px; }
+
+
+        /* -------------------------------------------
+           Secret Mode (Hacker/Cyber) Styles
+        ------------------------------------------- */
+        .secret-mode { background: var(--secret-bg) !important; color: var(--secret-text) !important; font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif !important;}
+        .secret-mode header { border-bottom: 1px solid #333; background: #000; }
+        .secret-mode .logo-text, .secret-mode .logo-sub, .secret-mode .logo-mark { color: var(--secret-accent); }
+        .secret-mode .search-container { border-color: #444; }
+        .secret-mode .search-container input { background: #111; color: #fff; }
+        .secret-mode .search-container button { background: #333; color: var(--secret-accent); }
+        .secret-mode .global-nav { color: #888; }
+        
+        .secret-mode h2 { color: var(--secret-accent); border-bottom: 1px solid #333; padding-bottom:10px; font-size:1.4rem; }
+        .secret-mode h3 { color: #fff; margin-top: 30px; border-left: 4px solid var(--secret-accent); padding-left:10px; font-size:1.1rem; }
+        .secret-mode p, .secret-mode li { line-height: 2.0; margin-bottom: 20px; font-size:0.95rem; }
+        .secret-mode .interviewer { color: #aaa; }
+        .secret-mode .meta-info { color: #666; font-size:0.85rem; border-bottom: 1px dashed #333; padding-bottom:10px; }
+        
+        .secret-mode .terminal-box { background: rgba(0,255,0,0.05); border: 1px solid #333; padding: 20px; border-radius: 5px; margin-bottom:20px; }
+        .secret-mode .terminal-box.green-border { border-left: 4px solid var(--secret-accent); }
+        .secret-mode .terminal-box.red-border { border-left: 4px solid #ff3333; }
+        .secret-mode .status-box { background: #110000; border: 1px solid #ff3333; color: #ff9999; padding: 20px; text-align: center; margin-top: 40px; }
+        .secret-mode .status-box h3 { color:#ff3333; margin-top:0; border:none; }
+        
+        .secret-mode .prof-img { width:300px; border: 1px solid #333; filter: grayscale(100%) contrast(1.2); }
+        .secret-mode .prof-img.left { float:left; margin: 0 20px 20px 0; }
+        .secret-mode .prof-img.right { float:right; margin: 0 0 20px 20px; }
+
+    </style>
+</head>
+<body>
+<div id="web-site" class="secret-mode">
+    <header>
+        <div class="header-top">
+            <div class="logo-area">
+                <div class="logo-mark">SC</div>
+                <div class="logo-text">シン・コギト株式会社<br><span class="logo-sub">AI技術で、新しい世界を。</span></div>
+            </div>
+            <form action="results.html" method="GET" class="search-container">
+                <input type="text" name="q" placeholder="サイト内を検索" required>
+                <button type="submit">🔍</button>
+            </form>
+        </div>
+        <nav class="global-nav">
+            <a href="index.html">HOME</a><a href="p2.html">ニュース</a><a href="p3.html">会社案内</a><a href="p4.html">代表あいさつ</a><a href="p5.html">研究メンバー</a><a href="p6.html">お問い合わせ</a>
+        </nav>
+    </header>
+    <div id="content-body">
+        <div class="rich-content secret-content">
+    <div class="secret-content rich-content" style="background: #000; color: #fff; padding: 20px;">
+        <h2 style='margin-top:0; color: #fff;'>用語解説：AGI（汎用人工知能）</h2>
+        
+        <div style="line-height: 1.8; color: #fff;">
+            <p><strong>AGI（Artificial General Intelligence）</strong>とは、日本語で「汎用人工知能」と訳される。現在、世の中で一般的に利用されているAIは、画像認識、文章生成、翻訳、囲碁といった「特定のタスク」をこなすことに特化した「特化型AI（Narrow AI）」である。これに対し、AGIは人間のように多種多様なタスクをこなし、自律的に学習し、未知の問題に対しても過去の経験を応用して解決策を導き出すことができる「強いAI」を指す。</p>
+
+            <p>AGIの定義は研究者によって様々だが、共通しているのは「人間と同等、あるいはそれ以上の知的能力を持つ」という点である。これには単なる計算能力だけでなく、抽象的な概念の理解、言語のニュアンスの把握、常識的な判断、創造性、さらには自己意識や感情に近いプロセスの模倣まで含まれると考えられている。AGIが実現すれば、科学研究の加速、複雑な社会問題の解決、さらには労働のあり方そのものを根本から変える可能性があると期待されている。</p>
+
+            <p>現在、AGIの実現に向けては複数のアプローチが試みられている。一つは、現在の主流であるディープラーニングを巨大化させ、より複雑なパターンを学習させる方法である。もう一つは、人間の脳の構造をより精密に模倣するバイオインスパイアードな手法である。脳のニューロンやシナプスの働きをコンピューター上で再現することで、人間のような柔軟な思考を獲得しようとする試みだ。さらに、記号論的なアプローチや、論理推論と機械学習を組み合わせたハイブリッドな手法なども活発に研究されている。</p>
+
+            <p>一方で、AGIの実現には技術的な課題だけでなく、倫理的、哲学的な議論も絶えない。人工知能が人間を超える「シンギュラリティ（技術的特異点）」に達した際、それを人間がコントロールできるのかという「アライメント問題」や、AIに権利や責任を認めるべきかといった法的な議論も重要なテーマとなっている。特に、AIが自己改善を繰り返して爆発的に知能を高める可能性（知能爆発）については、多くの専門家が警鐘を鳴らすと同時に、人類の進化における必然的なステップであるとする意見もある。</p>
+
+            <p>シン・コギト株式会社においても、AGIの実現は究極の目標の一つである。我々は、単なる効率化の道具としてのAIではなく、真の意味で人類のパートナーとなり得る知性を追い求めている。現在の技術的な限界をどう突破し、いかにして「知性の本質」へと肉薄するか。その答えを探るため、我々は認知科学、脳科学、そして情報工学の境界線上で、日々研究を続けているのである。</p>
+        </div>
+    </div>
+</div>
+        <br><br><a href="index.html" id="back-link" style="color: var(--secret-accent);">← トップへ戻る</a>
+        </div>
+    <div style="margin-top: auto; padding: 15px 30px; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #eaeaea; border-color: #333; color: #555;">
+        <div style="font-size: 0.75rem; color: #999;">※このWebサイトの内容はフィクションであり、実在の人物・団体とは一切関係がありません。</div>
+        <div style="font-size: 1rem; color: #777; font-weight: bold; font-family: inherit; letter-spacing: 1px;"><span style='color: #eee;'>27</span><span style='color: #555;'>/59(LV2)</span></div>
+    </div>
+</div>
+<div id="chat-window">
+    <div class="chat-header">
+        <span>📶 SYNC_COMM LINK</span>
+        <button class="btn-clear" onclick="clearChat()">ログ消去</button>
+    </div>
+    <div id="chat-log"></div>
+    <div id="options-area"></div>
+</div>
+
+<script>
+    let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    
+    const baseScenarios = {
+        "start": [
+            { text: "新しい情報があったよ", next: "info" },
+            { text: "まだよくわからないな……", next: "dontknow" },
+            { text: "とりあえずトップに戻ろう", next: "back" }
+        ],
+        "info": { msg: "ほんと！？ そこに書いてあるキーワードとかをまた検索してみたらいいのかな？", next: "start" },
+        "dontknow": { msg: "あせらずに、サイトの隅々まで見てみよう！", next: "start" },
+        "back": { msg: "分かった。何か見つけたらすぐに教えてね！", next: "start" }
+    };
+    const pageScenarios = {"start":[{"text":"AGI、なるほどね","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"とりあえずトップに戻ろう","next":"back"}],"info":{"msg":"なるほど…わからん","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"分かった。何か見つけたらすぐに教えてね！","next":"start"}};
+    const scenarios = Object.assign({}, baseScenarios, pageScenarios);
+
+    function saveAndRender() {
+        const log = document.getElementById('chat-log');
+        log.innerHTML = "";
+        chatHistory.forEach(m => {
+            const div = document.createElement('div');
+            div.className = `msg ${m.sender}`;
+            div.innerText = (m.sender === 'yu' ? 'ゆりかっぺ：' : '自分：') + m.text;
+            log.appendChild(div);
+        });
+        requestAnimationFrame(() => { log.scrollTop = log.scrollHeight; });
+        localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+    }
+
+    function showOptions(key) {
+        const area = document.getElementById('options-area');
+        area.innerHTML = "";
+        const opts = scenarios[key];
+        if (Array.isArray(opts)) {
+            opts.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "opt";
+                btn.innerText = opt.text;
+                btn.onclick = () => {
+                    chatHistory.push({ sender: 'me', text: opt.text });
+                    saveAndRender();
+                    area.querySelectorAll('button').forEach(b => b.disabled = true);
+                    setTimeout(() => {
+                        const res = scenarios[opt.next];
+                        if (res.msg) chatHistory.push({ sender: 'yu', text: res.msg });
+                        saveAndRender();
+                        showOptions(res.next);
+                    }, 800);
+                };
+                area.appendChild(btn);
+            });
+        }
+    }
+
+    function clearChat() {
+        if(confirm("通信履歴を消去してリセットしますか？")) {
+            localStorage.removeItem('chatHistory');
+            window.location.reload();
+        }
+    }
+
+    
+
+    saveAndRender();
+    showOptions("start");
+</script>
+</body>
+</html>

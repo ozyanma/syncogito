@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>二次募集：被験者実施ログ一覧 | シン・コギト株式会社</title>
+    <style>
+        :root { 
+            --corp-blue: #0056b3; 
+            --chat-bg: #121212; 
+            --yu-pink: #ffb6c1; 
+            
+            /* Secret Mode Colors */
+            --secret-bg: #050505;
+            --secret-text: #e0e0e0;
+            --secret-accent: #20c20e;
+        }
+        body { margin: 0; display: flex; height: 100vh; font-family: sans-serif; overflow: hidden; }
+        #web-site { width: 65%; overflow-y: auto; background: #fff; color: #333; display: flex; flex-direction: column;}
+        #content-body { padding: 40px; }
+        
+        #chat-window { width: 35%; background: var(--chat-bg); color: white; display: flex; flex-direction: column; border-left: 2px solid #222; }
+        .chat-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #1a1a1a; border-bottom: 1px solid #333; font-size: 0.85rem; }
+        .btn-clear { background: #444; color: #fff; border: 1px solid #666; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; }
+        .btn-clear:hover { background: #ff4444; border-color: #ff4444; }
+        #chat-log { flex-grow: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .msg { padding: 12px 16px; border-radius: 12px; max-width: 85%; font-size: 0.9rem; }
+        .yu { background: #2a2a2a; color: var(--yu-pink); align-self: flex-start; }
+        .me { background: var(--corp-blue); color: white; align-self: flex-end; }
+        
+        #options-area { padding: 20px; background: #1a1a1a; border-top: 1px solid #333; display: flex; flex-direction: column; gap: 10px; }
+        button.opt { background: #222; border: 1px solid #555; color: #ddd; padding: 12px; cursor: pointer; border-radius: 6px; text-align: left; }
+        button.opt:hover { background: #333; border-color: var(--yu-pink); color: white; }
+        button.opt:disabled { background: #1a1a1a; border-color: #333; color: #555; cursor: default; }
+
+        header { padding: 15px 30px; border-bottom: 1px solid #eaeaea; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-mark { font-size: 2rem; color: var(--corp-blue); font-weight: 900; letter-spacing: -2px; }
+        .logo-text { font-size: 1.2rem; font-weight: bold; color: #111; line-height: 1.2; }
+        .logo-sub { font-size: 0.7rem; color: #666; font-weight: normal; }
+        .search-container { display: flex; align-items: center; border: 1px solid #ccc; border-radius: 4px; overflow: hidden; }
+        .search-container input { border: none; padding: 8px 12px; outline: none; width: 200px; font-size: 0.85rem; color: #000; }
+        .search-container button { background: white; border: none; padding: 8px 12px; cursor: pointer; color: #555; }
+        .global-nav { display: flex; justify-content: space-between; padding: 0 20px; font-size: 0.85rem; font-weight: bold; color: #444; }
+        .global-nav a { text-decoration: none; color: inherit; padding: 5px 10px; }
+        
+        /* -------------------------------------------
+           Normal (Public) Content Styles
+        ------------------------------------------- */
+        .public-content h2, .public-content h3 { color: var(--corp-blue); border-bottom: 1px solid #eaeaea; padding-bottom:10px; }
+        .public-content p { line-height: 2.0; margin-bottom: 20px; }
+        .prof-img { width:250px; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .prof-img.left { float:left; margin: 0 20px 20px 0; }
+        .corp-table { width:100%; border-collapse:collapse; margin-bottom:30px; }
+        .corp-table th, .corp-table td { border:1px solid #eaeaea; padding:12px; }
+        .corp-table th { background:#f9f9f9; width:25%; }
+        .news-list p { border-bottom:1px solid #eee; padding-bottom:15px; }
+        .news-list .date { color: var(--corp-blue); font-weight:bold; }
+        .member-card { display:flex; gap:20px; border-bottom:1px solid #eee; padding-bottom:20px; margin-bottom:20px; }
+        .member-card img { width:120px; height: 120px; border-radius:50%; object-fit:cover; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .maintenance-box { border:1px solid #e74c3c; color:#e74c3c; padding:15px; border-radius:5px; font-size:0.9rem; }
+        .error-msg { color:#e74c3c; font-weight:bold; font-size:1.1rem; }
+        .internal-memo { color:#777; border-top:1px dashed #ccc; padding-top:15px; margin-top:30px; }
+        .signature { text-align:right; font-weight:bold; color:var(--corp-blue); margin-top:20px; }
+
+
+        /* -------------------------------------------
+           Secret Mode (Hacker/Cyber) Styles
+        ------------------------------------------- */
+        .secret-mode { background: var(--secret-bg) !important; color: var(--secret-text) !important; font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif !important;}
+        .secret-mode header { border-bottom: 1px solid #333; background: #000; }
+        .secret-mode .logo-text, .secret-mode .logo-sub, .secret-mode .logo-mark { color: var(--secret-accent); }
+        .secret-mode .search-container { border-color: #444; }
+        .secret-mode .search-container input { background: #111; color: #fff; }
+        .secret-mode .search-container button { background: #333; color: var(--secret-accent); }
+        .secret-mode .global-nav { color: #888; }
+        
+        .secret-mode h2 { color: var(--secret-accent); border-bottom: 1px solid #333; padding-bottom:10px; font-size:1.4rem; }
+        .secret-mode h3 { color: #fff; margin-top: 30px; border-left: 4px solid var(--secret-accent); padding-left:10px; font-size:1.1rem; }
+        .secret-mode p, .secret-mode li { line-height: 2.0; margin-bottom: 20px; font-size:0.95rem; }
+        .secret-mode .interviewer { color: #aaa; }
+        .secret-mode .meta-info { color: #666; font-size:0.85rem; border-bottom: 1px dashed #333; padding-bottom:10px; }
+        
+        .secret-mode .terminal-box { background: rgba(0,255,0,0.05); border: 1px solid #333; padding: 20px; border-radius: 5px; margin-bottom:20px; }
+        .secret-mode .terminal-box.green-border { border-left: 4px solid var(--secret-accent); }
+        .secret-mode .terminal-box.red-border { border-left: 4px solid #ff3333; }
+        .secret-mode .status-box { background: #110000; border: 1px solid #ff3333; color: #ff9999; padding: 20px; text-align: center; margin-top: 40px; }
+        .secret-mode .status-box h3 { color:#ff3333; margin-top:0; border:none; }
+        
+        .secret-mode .prof-img { width:300px; border: 1px solid #333; filter: grayscale(100%) contrast(1.2); }
+        .secret-mode .prof-img.left { float:left; margin: 0 20px 20px 0; }
+        .secret-mode .prof-img.right { float:right; margin: 0 0 20px 20px; }
+
+    </style>
+</head>
+<body>
+<div id="web-site" class="secret-mode">
+    <header>
+        <div class="header-top">
+            <div class="logo-area">
+                <div class="logo-mark">SC</div>
+                <div class="logo-text">シン・コギト株式会社<br><span class="logo-sub">AI技術で、新しい世界を。</span></div>
+            </div>
+            <form action="results.html" method="GET" class="search-container">
+                <input type="text" name="q" placeholder="サイト内を検索" required>
+                <button type="submit">🔍</button>
+            </form>
+        </div>
+        <nav class="global-nav">
+            <a href="index.html">HOME</a><a href="p2.html">ニュース</a><a href="p3.html">会社案内</a><a href="p4.html">代表あいさつ</a><a href="p5.html">研究メンバー</a><a href="p6.html">お問い合わせ</a>
+        </nav>
+    </header>
+    <div id="content-body">
+        <div class="rich-content secret-content">
+    <div class="rich-content">
+        <h2 style="margin-top:0;">二次募集：被験者実施ログ一覧</h2>
+        <p style="margin-bottom:20px; color:#666;">二次募集における延べ100名の被験者データおよび実験時の特記事項ログ。</p>
+        
+        <div style="border: 1px solid #ddd; margin-bottom: 20px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                <thead style="background: #f2f2f2;">
+                    <tr>
+                        <th style="border: 1px solid #ddd; padding: 10px; width: 15%; color: #000;">ID</th>
+                        <th style="border: 1px solid #ddd; padding: 10px; width: 15%; color: #000;">イニシャル</th>
+                        <th style="border: 1px solid #ddd; padding: 10px; width: 10%; color: #000;">年齢</th>
+                        <th style="border: 1px solid #ddd; padding: 10px; color: #000;">実験備考</th>
+                    </tr>
+                </thead>
+                <tbody>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S001</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">O.T</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">33</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S002</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">R.H</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">30</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S003</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">E.W</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">29</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">メガネ使用</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S004</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">U.I</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">34</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">高い集中力を維持</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S005</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.K</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">22</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">軽度の耳鳴りを報告</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S006</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">W.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">39</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">眠気を訴える場面あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S007</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">E.O</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">23</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S008</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">H.I</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">37</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S009</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">U.M</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">38</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">眠気を訴える場面あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S010</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">A.W</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">23</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">高い集中力を維持</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S011</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">I.I</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">29</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S012</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">N.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">30</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">瞬きの回数が平均より多い</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S013</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Y.R</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">29</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S014</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.M</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">26</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">高い集中力を維持</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S015</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">W.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">22</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">左眼に乱視あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S016</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">R.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">29</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">軽度の耳鳴りを報告</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S017</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">H.U</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">35</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S018</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">O.R</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">34</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">左眼に乱視あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S019</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">R.H</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">35</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S020</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">R.U</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">27</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">瞬きの回数が平均より多い</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S021</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">A.O</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">31</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S022</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.E</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">26</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">実験後、若干のふらつきあり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S023</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">K.I</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">32</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">視覚刺激中に気分が悪くなり、途中中断</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S024</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.E</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">31</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">コンタクトレンズ使用</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S025</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.E</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">26</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S026</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">I.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">36</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">実験後、若干のふらつきあり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S027</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">38</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">瞬きの回数が平均より多い</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S028</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">O.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">33</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S029</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">E.U</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">38</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">視覚刺激中に気分が悪くなり、途中中断</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S030</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">R.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">29</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">コンタクトレンズ使用</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S031</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">I.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">25</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S032</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">W.O</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">24</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">実験後、若干のふらつきあり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S033</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">N.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">22</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">軽度の耳鳴りを報告</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S034</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">I.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">39</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S035</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">E.S</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">20</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S036</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">H.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">33</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S037</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">I.H</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">23</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">左眼に乱視あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S038</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">O.I</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">36</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S039</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">E.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">30</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">コンタクトレンズ使用</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S040</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.W</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">24</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S041</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">I.M</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">21</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">過去に類似の実験参加経験あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S042</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">U.S</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">33</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S043</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.U</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">33</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">メガネ使用</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S044</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">K.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">28</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S045</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">T.H</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">28</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">左眼に乱視あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S046</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">U.W</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">23</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">瞬きの回数が平均より多い</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S047</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Y.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">25</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">眠気を訴える場面あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S048</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">T.K</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">22</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S049</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">E.R</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">27</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S050</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">N.K</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">21</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S051</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">T.R</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">24</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S052</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">N.A</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">24</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S053</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">W.A</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">24</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">実験後、若干のふらつきあり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S054</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">R.T</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">39</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S055</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">R.H</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">20</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S056</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">H.U</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">38</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S057</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">N.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">31</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">過去に類似の実験参加経験あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S058</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">U.T</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">30</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S059</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">H.W</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">38</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">高い集中力を維持</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S060</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">M.K</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">35</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">メガネ使用</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S061</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">H.T</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">37</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S062</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Y.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">28</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">左眼に乱視あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S063</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">A.A</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">37</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">眠気を訴える場面あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S064</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">I.E</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">22</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">実験後、若干のふらつきあり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S065</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">H.U</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">27</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">メガネ使用</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S066</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">U.S</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">24</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">高い集中力を維持</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S067</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">U.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">29</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">左眼に乱視あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S068</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">N.I</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">23</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">実験後、若干のふらつきあり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S069</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">R.O</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">34</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S070</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">E.S</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">26</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">コンタクトレンズ使用</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S071</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">W.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">22</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">高い集中力を維持</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S072</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">T.Y</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">21</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S073</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Y.R</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">21</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S074</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">E.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">39</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">瞬きの回数が平均より多い</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S075</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.W</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">22</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">左眼に乱視あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S076</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">M.O</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">30</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">実験後、若干のふらつきあり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S077</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">N.R</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">25</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">高い集中力を維持</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S078</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">R.R</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">35</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">高い集中力を維持</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S079</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">M.S</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">25</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">軽度の耳鳴りを報告</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S080</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">I.A</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">21</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S081</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Y.T</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">24</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">メガネ使用</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S082</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">O.A</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">25</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">眠気を訴える場面あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S083</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">Y.R</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">28</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S084</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">T.A</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">31</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">瞬きの回数が平均より多い</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S085</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">T.S</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">34</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S086</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">I.H</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">37</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S087</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">35</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">瞬きの回数が平均より多い</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S088</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">M.R</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">36</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">眠気を訴える場面あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S089</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">O.A</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">34</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S090</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">W.H</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">36</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">左眼に乱視あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S091</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">E.S</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">27</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">視覚刺激中に気分が悪くなり、途中中断</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S092</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">N.T</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">26</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S093</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">M.O</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">34</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S094</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.H</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">35</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">メガネ使用</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S095</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">U.N</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">32</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">過去に類似の実験参加経験あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S096</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">I.O</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">39</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S097</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S.M</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">39</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">特記事項なし</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S098</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">U.R</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">26</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">眠気を訴える場面あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S099</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">W.K</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">25</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">眠気を訴える場面あり</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">S100</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">R.S</td>
+            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">30</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">瞬きの回数が平均より多い</td>
+        </tr></tbody>
+            </table>
+        </div>
+        
+        <p style="margin-top:20px; font-size: 0.8rem; color: #999;">
+            ※本データは生体データ解析チームによって匿名化・構造化済み。
+        </p>
+    </div>
+</div>
+        <br><br><a href="index.html" id="back-link" style="color: var(--secret-accent);">← トップへ戻る</a>
+        </div>
+    <div style="margin-top: auto; padding: 15px 30px; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #eaeaea; border-color: #333; color: #555;">
+        <div style="font-size: 0.75rem; color: #999;">※このWebサイトの内容はフィクションであり、実在の人物・団体とは一切関係がありません。</div>
+        <div style="font-size: 1rem; color: #777; font-weight: bold; font-family: inherit; letter-spacing: 1px;"><span style='color: #eee;'>45</span><span style='color: #555;'>/59(LV3)</span></div>
+    </div>
+</div>
+<div id="chat-window">
+    <div class="chat-header">
+        <span>📶 SYNC_COMM LINK</span>
+        <button class="btn-clear" onclick="clearChat()">ログ消去</button>
+    </div>
+    <div id="chat-log"></div>
+    <div id="options-area"></div>
+</div>
+
+<script>
+    let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    
+    const baseScenarios = {
+        "start": [
+            { text: "新しい情報があったよ", next: "info" },
+            { text: "まだよくわからないな……", next: "dontknow" },
+            { text: "とりあえずトップに戻ろう", next: "back" }
+        ],
+        "info": { msg: "ほんと！？ そこに書いてあるキーワードとかをまた検索してみたらいいのかな？", next: "start" },
+        "dontknow": { msg: "あせらずに、サイトの隅々まで見てみよう！", next: "start" },
+        "back": { msg: "分かった。何か見つけたらすぐに教えてね！", next: "start" }
+    };
+    const pageScenarios = {"start":[{"text":"これが被験者リストか","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"とりあえずトップに戻ろう","next":"back"}],"info":{"msg":"多すぎる！","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"分かった。何か見つけたらすぐに教えてね！","next":"start"}};
+    const scenarios = Object.assign({}, baseScenarios, pageScenarios);
+
+    function saveAndRender() {
+        const log = document.getElementById('chat-log');
+        log.innerHTML = "";
+        chatHistory.forEach(m => {
+            const div = document.createElement('div');
+            div.className = `msg ${m.sender}`;
+            div.innerText = (m.sender === 'yu' ? 'ゆりかっぺ：' : '自分：') + m.text;
+            log.appendChild(div);
+        });
+        requestAnimationFrame(() => { log.scrollTop = log.scrollHeight; });
+        localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+    }
+
+    function showOptions(key) {
+        const area = document.getElementById('options-area');
+        area.innerHTML = "";
+        const opts = scenarios[key];
+        if (Array.isArray(opts)) {
+            opts.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "opt";
+                btn.innerText = opt.text;
+                btn.onclick = () => {
+                    chatHistory.push({ sender: 'me', text: opt.text });
+                    saveAndRender();
+                    area.querySelectorAll('button').forEach(b => b.disabled = true);
+                    setTimeout(() => {
+                        const res = scenarios[opt.next];
+                        if (res.msg) chatHistory.push({ sender: 'yu', text: res.msg });
+                        saveAndRender();
+                        showOptions(res.next);
+                    }, 800);
+                };
+                area.appendChild(btn);
+            });
+        }
+    }
+
+    function clearChat() {
+        if(confirm("通信履歴を消去してリセットしますか？")) {
+            localStorage.removeItem('chatHistory');
+            window.location.reload();
+        }
+    }
+
+    
+
+    saveAndRender();
+    showOptions("start");
+</script>
+</body>
+</html>

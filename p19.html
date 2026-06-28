@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>主任研究員：沖使徒ノルア インタビュー記事原稿 | シン・コギト株式会社</title>
+    <style>
+        :root { 
+            --corp-blue: #0056b3; 
+            --chat-bg: #121212; 
+            --yu-pink: #ffb6c1; 
+            
+            /* Secret Mode Colors */
+            --secret-bg: #050505;
+            --secret-text: #e0e0e0;
+            --secret-accent: #20c20e;
+        }
+        body { margin: 0; display: flex; height: 100vh; font-family: sans-serif; overflow: hidden; }
+        #web-site { width: 65%; overflow-y: auto; background: #fff; color: #333; display: flex; flex-direction: column;}
+        #content-body { padding: 40px; }
+        
+        #chat-window { width: 35%; background: var(--chat-bg); color: white; display: flex; flex-direction: column; border-left: 2px solid #222; }
+        .chat-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #1a1a1a; border-bottom: 1px solid #333; font-size: 0.85rem; }
+        .btn-clear { background: #444; color: #fff; border: 1px solid #666; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; }
+        .btn-clear:hover { background: #ff4444; border-color: #ff4444; }
+        #chat-log { flex-grow: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .msg { padding: 12px 16px; border-radius: 12px; max-width: 85%; font-size: 0.9rem; }
+        .yu { background: #2a2a2a; color: var(--yu-pink); align-self: flex-start; }
+        .me { background: var(--corp-blue); color: white; align-self: flex-end; }
+        
+        #options-area { padding: 20px; background: #1a1a1a; border-top: 1px solid #333; display: flex; flex-direction: column; gap: 10px; }
+        button.opt { background: #222; border: 1px solid #555; color: #ddd; padding: 12px; cursor: pointer; border-radius: 6px; text-align: left; }
+        button.opt:hover { background: #333; border-color: var(--yu-pink); color: white; }
+        button.opt:disabled { background: #1a1a1a; border-color: #333; color: #555; cursor: default; }
+
+        header { padding: 15px 30px; border-bottom: 1px solid #eaeaea; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-mark { font-size: 2rem; color: var(--corp-blue); font-weight: 900; letter-spacing: -2px; }
+        .logo-text { font-size: 1.2rem; font-weight: bold; color: #111; line-height: 1.2; }
+        .logo-sub { font-size: 0.7rem; color: #666; font-weight: normal; }
+        .search-container { display: flex; align-items: center; border: 1px solid #ccc; border-radius: 4px; overflow: hidden; }
+        .search-container input { border: none; padding: 8px 12px; outline: none; width: 200px; font-size: 0.85rem; color: #000; }
+        .search-container button { background: white; border: none; padding: 8px 12px; cursor: pointer; color: #555; }
+        .global-nav { display: flex; justify-content: space-between; padding: 0 20px; font-size: 0.85rem; font-weight: bold; color: #444; }
+        .global-nav a { text-decoration: none; color: inherit; padding: 5px 10px; }
+        
+        /* -------------------------------------------
+           Normal (Public) Content Styles
+        ------------------------------------------- */
+        .public-content h2, .public-content h3 { color: var(--corp-blue); border-bottom: 1px solid #eaeaea; padding-bottom:10px; }
+        .public-content p { line-height: 2.0; margin-bottom: 20px; }
+        .prof-img { width:250px; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .prof-img.left { float:left; margin: 0 20px 20px 0; }
+        .corp-table { width:100%; border-collapse:collapse; margin-bottom:30px; }
+        .corp-table th, .corp-table td { border:1px solid #eaeaea; padding:12px; }
+        .corp-table th { background:#f9f9f9; width:25%; }
+        .news-list p { border-bottom:1px solid #eee; padding-bottom:15px; }
+        .news-list .date { color: var(--corp-blue); font-weight:bold; }
+        .member-card { display:flex; gap:20px; border-bottom:1px solid #eee; padding-bottom:20px; margin-bottom:20px; }
+        .member-card img { width:120px; height: 120px; border-radius:50%; object-fit:cover; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .maintenance-box { border:1px solid #e74c3c; color:#e74c3c; padding:15px; border-radius:5px; font-size:0.9rem; }
+        .error-msg { color:#e74c3c; font-weight:bold; font-size:1.1rem; }
+        .internal-memo { color:#777; border-top:1px dashed #ccc; padding-top:15px; margin-top:30px; }
+        .signature { text-align:right; font-weight:bold; color:var(--corp-blue); margin-top:20px; }
+
+
+        /* -------------------------------------------
+           Secret Mode (Hacker/Cyber) Styles
+        ------------------------------------------- */
+        .secret-mode { background: var(--secret-bg) !important; color: var(--secret-text) !important; font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif !important;}
+        .secret-mode header { border-bottom: 1px solid #333; background: #000; }
+        .secret-mode .logo-text, .secret-mode .logo-sub, .secret-mode .logo-mark { color: var(--secret-accent); }
+        .secret-mode .search-container { border-color: #444; }
+        .secret-mode .search-container input { background: #111; color: #fff; }
+        .secret-mode .search-container button { background: #333; color: var(--secret-accent); }
+        .secret-mode .global-nav { color: #888; }
+        
+        .secret-mode h2 { color: var(--secret-accent); border-bottom: 1px solid #333; padding-bottom:10px; font-size:1.4rem; }
+        .secret-mode h3 { color: #fff; margin-top: 30px; border-left: 4px solid var(--secret-accent); padding-left:10px; font-size:1.1rem; }
+        .secret-mode p, .secret-mode li { line-height: 2.0; margin-bottom: 20px; font-size:0.95rem; }
+        .secret-mode .interviewer { color: #aaa; }
+        .secret-mode .meta-info { color: #666; font-size:0.85rem; border-bottom: 1px dashed #333; padding-bottom:10px; }
+        
+        .secret-mode .terminal-box { background: rgba(0,255,0,0.05); border: 1px solid #333; padding: 20px; border-radius: 5px; margin-bottom:20px; }
+        .secret-mode .terminal-box.green-border { border-left: 4px solid var(--secret-accent); }
+        .secret-mode .terminal-box.red-border { border-left: 4px solid #ff3333; }
+        .secret-mode .status-box { background: #110000; border: 1px solid #ff3333; color: #ff9999; padding: 20px; text-align: center; margin-top: 40px; }
+        .secret-mode .status-box h3 { color:#ff3333; margin-top:0; border:none; }
+        
+        .secret-mode .prof-img { width:300px; border: 1px solid #333; filter: grayscale(100%) contrast(1.2); }
+        .secret-mode .prof-img.left { float:left; margin: 0 20px 20px 0; }
+        .secret-mode .prof-img.right { float:right; margin: 0 0 20px 20px; }
+
+    </style>
+</head>
+<body>
+<div id="web-site" class="secret-mode">
+    <header>
+        <div class="header-top">
+            <div class="logo-area">
+                <div class="logo-mark">SC</div>
+                <div class="logo-text">シン・コギト株式会社<br><span class="logo-sub">AI技術で、新しい世界を。</span></div>
+            </div>
+            <form action="results.html" method="GET" class="search-container">
+                <input type="text" name="q" placeholder="サイト内を検索" required>
+                <button type="submit">🔍</button>
+            </form>
+        </div>
+        <nav class="global-nav">
+            <a href="index.html">HOME</a><a href="p2.html">ニュース</a><a href="p3.html">会社案内</a><a href="p4.html">代表あいさつ</a><a href="p5.html">研究メンバー</a><a href="p6.html">お問い合わせ</a>
+        </nav>
+    </header>
+    <div id="content-body">
+        <div class="rich-content secret-content">
+    <div class="secret-content rich-content">
+        <h2 style="margin-top:0;">主任研究員・沖使徒ノルア インタビュー記事原稿</h2>
+        <p style="color:#ff4444; font-size:0.85rem; border:1px solid #ff4444; padding:8px; margin-bottom:20px;">
+            [社内確認版] 公開前原稿 ─ 外部への共有禁止
+        </p>
+
+        <div style="overflow:hidden;">
+            <img src="images/沖使徒ノルア_secret.png" onclick="openModal(this.src)" style="width:200px; float:right; margin: 0 0 20px 30px; border-radius:8px; border:1px solid #444; box-shadow: 0 4px 8px rgba(0,0,0,0.2); cursor: pointer;" alt="クリックで拡大">
+
+            <h3 style="margin-top:0;">■ AIに「人間」を理解させるためのアプローチ</h3>
+            <p style="margin-bottom:15px;">
+                <span style="font-style:italic; color:#aaa;">――AIの開発に、なぜここまで深く脳科学の研究必要なのでしょうか？</span>
+            </p>
+            <p style="margin-bottom:20px;">
+                <strong>沖使徒：</strong>
+                シンプルな理由です。次世代のAIに人間を真の意味で理解させるためには、
+                人間のソースコードたる脳の活動を、物理的かつ電気的に読み解かなければならないからです。
+                テキストや言語データだけから、人間の感情──焦燥感や恐怖、深い喜びを正確に推測するのは、
+                どうしても限界があります。だからこそ生体データという一次ソースが不可欠なんです。
+            </p>
+
+            <h3>■ 実証データと被験者の協力</h3>
+            <p style="margin-bottom:15px;">
+                <span style="font-style:italic; color:#aaa;">――実際の研究では大変な時間と実証データが必要になりそうですね。</span>
+            </p>
+            <p style="margin-bottom:20px;">
+                <strong>沖使徒：</strong>
+                ええ。机上の理論だけではシステムは完成しません。
+                実際の脳波パターンの複雑なノイズを見つめ、理論を実践に落とし込むための
+                被験者の協力が不可欠です。私たちは良質でリアルな反応データを常に求めています。
+            </p>
+
+            <h3>■ 現代の若年層に着目する理由</h3>
+            <p style="margin-bottom:15px;">
+                <span style="font-style:italic; color:#aaa;">――研究において特に注目しているデータ層などはありますか？</span>
+            </p>
+            <p style="margin-bottom:20px;">
+                <strong>沖使徒：</strong>
+                現代の若年層は、日常的に長時間スマートフォンやPCに触れているため、
+                デジタルな視覚・聴覚情報に対する反応速度や順応性が非常に高いんです。
+                我々が提供するUIやテストアルゴリズムに対して、極めてクリアな波形を見せてくれる。
+                そうした適性の高い方々のデータは、AI開発における大きなヒントになっています。
+            </p>
+        </div>
+    </div>
+
+    <!-- 画像拡大用モーダルコンテナ -->
+    <div id="imageModal" onclick="closeModal()" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); align-items: center; justify-content: center; cursor: zoom-out;">
+        <img id="modalImage" style="max-width: 90%; max-height: 90%; border-radius: 8px; border: 2px solid #555; box-shadow: 0 4px 20px rgba(0,0,0,0.5); object-fit: contain; cursor: default;" onclick="event.stopPropagation();">
+    </div>
+
+    <script>
+        function openModal(src) {
+            var modal = document.getElementById('imageModal');
+            var modalImg = document.getElementById('modalImage');
+            modal.style.display = "flex";
+            modalImg.src = src;
+        }
+        function closeModal() {
+            var modal = document.getElementById('imageModal');
+            modal.style.display = "none";
+        }
+    </script>
+</div>
+        <br><br><a href="index.html" id="back-link" style="color: var(--secret-accent);">← トップへ戻る</a>
+        </div>
+    <div style="margin-top: auto; padding: 15px 30px; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #eaeaea; border-color: #333; color: #555;">
+        <div style="font-size: 0.75rem; color: #999;">※このWebサイトの内容はフィクションであり、実在の人物・団体とは一切関係がありません。</div>
+        <div style="font-size: 1rem; color: #777; font-weight: bold; font-family: inherit; letter-spacing: 1px;"><span style='color: #eee;'>19</span><span style='color: #555;'>/59(LV2)</span></div>
+    </div>
+</div>
+<div id="chat-window">
+    <div class="chat-header">
+        <span>📶 SYNC_COMM LINK</span>
+        <button class="btn-clear" onclick="clearChat()">ログ消去</button>
+    </div>
+    <div id="chat-log"></div>
+    <div id="options-area"></div>
+</div>
+
+<script>
+    let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    
+    const baseScenarios = {
+        "start": [
+            { text: "新しい情報があったよ", next: "info" },
+            { text: "まだよくわからないな……", next: "dontknow" },
+            { text: "とりあえずトップに戻ろう", next: "back" }
+        ],
+        "info": { msg: "ほんと！？ そこに書いてあるキーワードとかをまた検索してみたらいいのかな？", next: "start" },
+        "dontknow": { msg: "あせらずに、サイトの隅々まで見てみよう！", next: "start" },
+        "back": { msg: "分かった。何か見つけたらすぐに教えてね！", next: "start" }
+    };
+    const pageScenarios = {"start":[{"text":"AIのための脳研究か…","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"とりあえずトップに戻ろう","next":"back"}],"info":{"msg":"なるほど…わからん","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"分かった。何か見つけたらすぐに教えてね！","next":"start"}};
+    const scenarios = Object.assign({}, baseScenarios, pageScenarios);
+
+    function saveAndRender() {
+        const log = document.getElementById('chat-log');
+        log.innerHTML = "";
+        chatHistory.forEach(m => {
+            const div = document.createElement('div');
+            div.className = `msg ${m.sender}`;
+            div.innerText = (m.sender === 'yu' ? 'ゆりかっぺ：' : '自分：') + m.text;
+            log.appendChild(div);
+        });
+        requestAnimationFrame(() => { log.scrollTop = log.scrollHeight; });
+        localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+    }
+
+    function showOptions(key) {
+        const area = document.getElementById('options-area');
+        area.innerHTML = "";
+        const opts = scenarios[key];
+        if (Array.isArray(opts)) {
+            opts.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "opt";
+                btn.innerText = opt.text;
+                btn.onclick = () => {
+                    chatHistory.push({ sender: 'me', text: opt.text });
+                    saveAndRender();
+                    area.querySelectorAll('button').forEach(b => b.disabled = true);
+                    setTimeout(() => {
+                        const res = scenarios[opt.next];
+                        if (res.msg) chatHistory.push({ sender: 'yu', text: res.msg });
+                        saveAndRender();
+                        showOptions(res.next);
+                    }, 800);
+                };
+                area.appendChild(btn);
+            });
+        }
+    }
+
+    function clearChat() {
+        if(confirm("通信履歴を消去してリセットしますか？")) {
+            localStorage.removeItem('chatHistory');
+            window.location.reload();
+        }
+    }
+
+    
+
+    saveAndRender();
+    showOptions("start");
+</script>
+</body>
+</html>
