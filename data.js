@@ -424,7 +424,7 @@ const pagesData = [
         "desc": "",
         "secret": true,
         "level": 1,
-        "content": "\n    <div class=\"rich-content\">\n        <div style=\"border: 2px solid #333; padding: 20px; background: #fff; color: #222; font-family: 'Noto Serif JP', Georgia, serif;\">\n            <div style=\"text-align:center; border-bottom: 3px double #333; padding-bottom:10px; margin-bottom:15px;\">\n                <p style=\"margin:0; font-size:0.8rem; color:#555;\">湊星タイムズ（地域版）</p>\n                <h2 style=\"margin:5px 0; font-size:1.4rem; color:#111;\">東京都湊星区で27歳女性が行方不明に</h2>\n                <p style=\"margin:0; font-size:0.8rem; color:#555;\">2026年 6月 29日（月）朝刊</p>\n            </div>\n\n            <p style=\"text-indent: 1em; margin-bottom:15px; color:#222;\">\n                東京都湊星区在住の27歳女性・紺野セシルさんが先月下旬から連絡を絶ち、\n                家族の届け出により行方不明者として捜索が行われていることが17日、本紙の取材で明らかになった。\n            </p>\n            <p style=\"text-indent: 1em; margin-bottom:15px; color:#222;\">\n                紺野さんは湊星区内のAI関連企業に勤めていた元会社員のエンジニアで、\n                同僚からは「非常に優秀で責任感が強い」と慕われていたという。\n                失踪数日前に会社を退職していたが、その後の行方については詳細が掴めていない。\n            </p>\n            <p style=\"text-indent: 1em; margin-bottom:15px; color:#222;\">\n                近隣住民によると、紺野さんはここ数日で様子が変わっていたといい、\n                「夜遅くに独り言を言いながら歩いているのを何度か見た」「急に活動的になったと思ったら突然消えた」\n                との証言も寄せられている。\n            </p>\n            <p style=\"text-indent: 1em; margin-bottom:15px; color:#222;\">\n                警視庁湊星署は任意での情報提供を呼びかけており、\n                情報提供は湊星署（電話：03-XXXX-XXXX）まで。\n            </p>\n        </div>\n    </div>\n",
+        "content": "\n    <div class=\"rich-content\">\n        <div style=\"border: 2px solid #333; padding: 20px; background: #fff; color: #222; font-family: 'Noto Serif JP', Georgia, serif;\">\n            <div style=\"text-align:center; border-bottom: 3px double #333; padding-bottom:10px; margin-bottom:15px;\">\n                <p style=\"margin:0; font-size:0.8rem; color:#555;\">湊星タイムズ（地域版）</p>\n                <h2 style=\"margin:5px 0; font-size:1.4rem; color:#111;\">東京都湊星区で29歳女性が行方不明に</h2>\n                <p style=\"margin:0; font-size:0.8rem; color:#555;\">2026年 6月 29日（月）朝刊</p>\n            </div>\n\n            <p style=\"text-indent: 1em; margin-bottom:15px; color:#222;\">\n                東京都湊星区在住の29歳女性・紺野セシルさんが先月下旬から連絡を絶ち、\n                家族の届け出により行方不明者として捜索が行われていることが28日、本紙の取材で明らかになった。\n            </p>\n            <p style=\"text-indent: 1em; margin-bottom:15px; color:#222;\">\n                紺野さんは湊星区内のAI関連企業に勤めていた元会社員のエンジニアで、\n                同僚からは「非常に優秀で責任感が強い」と慕われていたという。\n                失踪数日前に会社を退職していたが、その後の行方については詳細が掴めていない。\n            </p>\n            <p style=\"text-indent: 1em; margin-bottom:15px; color:#222;\">\n                近隣住民によると、紺野さんはここ数日で様子が変わっていたといい、\n                「夜遅くに独り言を言いながら歩いているのを何度か見た」「急に活動的になったと思ったら突然消えた」\n                との証言も寄せられている。\n            </p>\n            <p style=\"text-indent: 1em; margin-bottom:15px; color:#222;\">\n                警視庁湊星署は任意での情報提供を呼びかけており、\n                情報提供は湊星署（電話：03-XXXX-XXXX）まで。\n            </p>\n        </div>\n    </div>\n",
         "yurikappeMessage": "これ私みたいに捕まった人かな？",
         "pageScenarios": {
             "start": [
@@ -613,7 +613,7 @@ const pagesData = [
     },
     {
         "id": "p18",
-        "searchKey": "インタビュー記事原稿",
+        "searchKey": "インタビュー記事原稿|原稿",
         "title": "研究員：跡玲奈リン インタビュー記事原稿",
         "keywords": [
             "1108（社員番号）"
@@ -653,7 +653,7 @@ const pagesData = [
     },
     {
         "id": "p19",
-        "searchKey": "インタビュー記事原稿",
+        "searchKey": "インタビュー記事原稿|原稿",
         "title": "主任研究員：沖使徒ノルア インタビュー記事原稿",
         "keywords": [
             "被験者"
@@ -693,7 +693,7 @@ const pagesData = [
     },
     {
         "id": "p20",
-        "searchKey": "インタビュー記事原稿",
+        "searchKey": "インタビュー記事原稿|原稿",
         "title": "代表取締役：遠藤ヒスタ インタビュー記事原稿",
         "keywords": [
             "AGI(を想起させるテキスト)"
