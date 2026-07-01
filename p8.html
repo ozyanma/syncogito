@@ -179,13 +179,13 @@
         "start": [
             { text: "新しい情報があったよ", next: "info" },
             { text: "まだよくわからないな……", next: "dontknow" },
-            { text: "とりあえずトップに戻ろう", next: "back" }
+            { text: "【ヒント】このページで何か気になるところある？", next: "back" }
         ],
         "info": { msg: "ほんと！？ そこに書いてあるキーワードとかをまた検索してみたらいいのかな？", next: "start" },
         "dontknow": { msg: "あせらずに、サイトの隅々まで見てみよう！", next: "start" },
-        "back": { msg: "分かった。何か見つけたらすぐに教えてね！", next: "start" }
+        "back": { msg: "うーん…特には…", next: "start" }
     };
-    const pageScenarios = {"start":[{"text":"ゆりかっぺもこのシンポジウムに参加してたとか？","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"とりあえずトップに戻ろう","next":"back"}],"info":{"msg":"してない！うちの会社、AIに興味ないんだよね…","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"分かった。何か見つけたらすぐに教えてね！","next":"start"}};
+    const pageScenarios = {"start":[{"text":"ゆりかっぺもこのシンポジウムに参加してたとか？","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"【ヒント】このページで何か気になるところある？","next":"back"}],"info":{"msg":"してない！うちの会社、AIに興味ないんだよね…","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"うーん…特には…","next":"start"}};
     const scenarios = Object.assign({}, baseScenarios, pageScenarios);
 
     function saveAndRender() {
@@ -228,12 +228,36 @@
 
     function clearChat() {
         if(confirm("通信履歴を消去してリセットしますか？")) {
-            localStorage.removeItem('chatHistory');
+            localStorage.clear();
             window.location.reload();
         }
     }
 
-    
+    const pageId = "p8";
+    function triggerAutoSend() {
+        const autoSentKey = 'autoSent_' + pageId;
+        const hasAutoSent = localStorage.getItem(autoSentKey);
+        if (!hasAutoSent) {
+            const startOpts = scenarios["start"];
+            if (Array.isArray(startOpts) && startOpts.length > 0) {
+                const firstOpt = startOpts[0];
+                setTimeout(() => {
+                    chatHistory.push({ sender: 'me', text: firstOpt.text });
+                    saveAndRender();
+                    setTimeout(() => {
+                        const res = scenarios[firstOpt.next];
+                        if (res && res.msg) {
+                            chatHistory.push({ sender: 'yu', text: res.msg });
+                            saveAndRender();
+                        }
+                        localStorage.setItem(autoSentKey, 'true');
+                    }, 800);
+                }, 2000);
+            }
+        }
+    }
+
+    triggerAutoSend();
 
     saveAndRender();
     showOptions("start");

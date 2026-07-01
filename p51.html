@@ -115,11 +115,11 @@
         <div class="content-section" style="padding: 40px;">
             <h2 style='margin-top:0;'>ニュース：資金調達のお知らせ詳細（HPアーカイブス）</h2>
             <p><strong>2022年 12月 15日</strong></p>
-            <p>シン・コギト株式会社は、次世代AGI（汎用人工知能）の研究開発をさらに加速させるため、大手投資ファンドおよび複数の事業会社を引受先とする第三者割当増資を実施し、総額1億円の資金調達を完了したことをお知らせいたします。</p>
+            <p>シン・コギト株式会社は、次世代AI（汎用人工知能）の研究開発をさらに加速させるため、大手投資ファンドおよび複数の事業会社を引受先とする第三者割当増資を実施し、総額1億円の資金調達を完了したことをお知らせいたします。</p>
             <p><strong>■ 資金調達の目的</strong></p>
             <ul>
                 <li>生体データ解析用サーバー群「Syn-Core」の国内最大規模への拡張</li>
-                <li>次世代AGI開発向けたさらなる実験環境の整備</li>
+                <li>次世代AI開発向けたさらなる実験環境の整備</li>
                 <li>優秀な研究者およびエンジニアのさらなる採用強化</li>
             </ul>
             <p>我々は、この資金を元に「人間とAIの真の融合」という人類の夢を、数年以内に現実のものといたします。今後のシン・コギトの飛躍にご期待ください。</p>
@@ -148,13 +148,13 @@
         "start": [
             { text: "新しい情報があったよ", next: "info" },
             { text: "まだよくわからないな……", next: "dontknow" },
-            { text: "とりあえずトップに戻ろう", next: "back" }
+            { text: "【ヒント】このページで何か気になるところある？", next: "back" }
         ],
         "info": { msg: "ほんと！？ そこに書いてあるキーワードとかをまた検索してみたらいいのかな？", next: "start" },
         "dontknow": { msg: "あせらずに、サイトの隅々まで見てみよう！", next: "start" },
-        "back": { msg: "分かった。何か見つけたらすぐに教えてね！", next: "start" }
+        "back": { msg: "うーん…特には…", next: "start" }
     };
-    const pageScenarios = {"start":[{"text":"資金調達もできたのか…","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"とりあえずトップに戻ろう","next":"back"}],"info":{"msg":"1億円…10分の1ぐらい欲しい！","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"分かった。何か見つけたらすぐに教えてね！","next":"start"}};
+    const pageScenarios = {"start":[{"text":"資金調達もできたのか…","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"【ヒント】このページで何か気になるところある？","next":"back"}],"info":{"msg":"1億円…10分の1ぐらい欲しい！","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…","next":"start"}};
     const scenarios = Object.assign({}, baseScenarios, pageScenarios);
 
     function saveAndRender() {
@@ -197,12 +197,36 @@
 
     function clearChat() {
         if(confirm("通信履歴を消去してリセットしますか？")) {
-            localStorage.removeItem('chatHistory');
+            localStorage.clear();
             window.location.reload();
         }
     }
 
-    
+    const pageId = "p51";
+    function triggerAutoSend() {
+        const autoSentKey = 'autoSent_' + pageId;
+        const hasAutoSent = localStorage.getItem(autoSentKey);
+        if (!hasAutoSent) {
+            const startOpts = scenarios["start"];
+            if (Array.isArray(startOpts) && startOpts.length > 0) {
+                const firstOpt = startOpts[0];
+                setTimeout(() => {
+                    chatHistory.push({ sender: 'me', text: firstOpt.text });
+                    saveAndRender();
+                    setTimeout(() => {
+                        const res = scenarios[firstOpt.next];
+                        if (res && res.msg) {
+                            chatHistory.push({ sender: 'yu', text: res.msg });
+                            saveAndRender();
+                        }
+                        localStorage.setItem(autoSentKey, 'true');
+                    }, 800);
+                }, 2000);
+            }
+        }
+    }
+
+    triggerAutoSend();
 
     saveAndRender();
     showOptions("start");

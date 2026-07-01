@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>開発中AGIについて | シン・コギト株式会社</title>
+    <title>開発中AIについて | シン・コギト株式会社</title>
     <style>
         :root { 
             --corp-blue: #0056b3; 
@@ -113,7 +113,7 @@
     <div id="content-body">
         <div class="rich-content secret-content">
         <div class="secret-content rich-content">
-            <h2 style='margin-top:0;'>開発中AGI『5years』について</h2>
+            <h2 style='margin-top:0;'>開発中AI『5years』について</h2>
             <p>シン・コギト社内説明資料</p>
             <hr style="border-color: #333; margin: 20px 0;">
 
@@ -134,7 +134,7 @@
             <h3>3. ヒトの脳を介した成長アプローチ</h3>
             <p>
                 5yearsは静的なテキストデータや画像データのみによる学習では突破できない「常識の壁」を乗り越えるため、ヒトの脳（知覚プロセス）と接続し、脳が外界を処理する様子を直接観察するアプローチをとる。
-                これにより、人間が何年もかけて獲得する「常識」や「直感」を、極めて短期間かつ効率的に吸収し、高次の汎用人工知能（AGI）へと成長することを目指している。
+                これにより、人間が何年もかけて獲得する「常識」や「直感」を、極めて短期間かつ効率的に吸収し、高次の汎用人工知能へと成長することを目指している。
             </p>
         </div>
     </div>
@@ -161,13 +161,13 @@
         "start": [
             { text: "新しい情報があったよ", next: "info" },
             { text: "まだよくわからないな……", next: "dontknow" },
-            { text: "とりあえずトップに戻ろう", next: "back" }
+            { text: "【ヒント】このページで何か気になるところある？", next: "back" }
         ],
         "info": { msg: "ほんと！？ そこに書いてあるキーワードとかをまた検索してみたらいいのかな？", next: "start" },
         "dontknow": { msg: "あせらずに、サイトの隅々まで見てみよう！", next: "start" },
-        "back": { msg: "分かった。何か見つけたらすぐに教えてね！", next: "start" }
+        "back": { msg: "うーん…特には…", next: "start" }
     };
-    const pageScenarios = {"start":[{"text":"5歳児…一時期ゆりかっぺも5歳児設定で配信してなかった？","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"とりあえずトップに戻ろう","next":"back"}],"info":{"msg":"昔ね！忘れ去られた設定だよ！","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"分かった。何か見つけたらすぐに教えてね！","next":"start"}};
+    const pageScenarios = {"start":[{"text":"5歳児…一時期ゆりかっぺも5歳児設定で配信してなかった？","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"【ヒント】このページで何か気になるところある？","next":"back"}],"info":{"msg":"昔ね！忘れ去られた設定だよ！","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"うーん…特には…","next":"start"}};
     const scenarios = Object.assign({}, baseScenarios, pageScenarios);
 
     function saveAndRender() {
@@ -210,12 +210,36 @@
 
     function clearChat() {
         if(confirm("通信履歴を消去してリセットしますか？")) {
-            localStorage.removeItem('chatHistory');
+            localStorage.clear();
             window.location.reload();
         }
     }
 
-    
+    const pageId = "p58";
+    function triggerAutoSend() {
+        const autoSentKey = 'autoSent_' + pageId;
+        const hasAutoSent = localStorage.getItem(autoSentKey);
+        if (!hasAutoSent) {
+            const startOpts = scenarios["start"];
+            if (Array.isArray(startOpts) && startOpts.length > 0) {
+                const firstOpt = startOpts[0];
+                setTimeout(() => {
+                    chatHistory.push({ sender: 'me', text: firstOpt.text });
+                    saveAndRender();
+                    setTimeout(() => {
+                        const res = scenarios[firstOpt.next];
+                        if (res && res.msg) {
+                            chatHistory.push({ sender: 'yu', text: res.msg });
+                            saveAndRender();
+                        }
+                        localStorage.setItem(autoSentKey, 'true');
+                    }, 800);
+                }, 2000);
+            }
+        }
+    }
+
+    triggerAutoSend();
 
     saveAndRender();
     showOptions("start");

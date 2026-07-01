@@ -120,8 +120,8 @@
             </div>
             <h3>観察記録</h3>
             <p>
-                被験者の脳内へAGI「5years」をインストールして以降、定期的な経過観察を行っている。
-                被験者にはVocal-Syncを日常生活で定期的に使用してもらっており、利用頻度が高く保たれているため、AIの定着状況は極めて良好である。
+                被験者の脳内へAI「5years」をインストールして以降、定期的な経過観察を行っている。
+                被験者にはVocal-Syncを日常生活で定期的に使用してもらっており、利用頻度が高く保たれているため、AIの定着状況は極めて良好である（AIの影響か配信活動時に「5歳児設定」を使用するようになっている）。
             </p>
             <p>
                 被験者は日常生活において、職場での人間関係、ネットでのライブ配信活動、音声メディアでのポッドキャスト収録など、多様な社会的・認知的活動を行っている。
@@ -164,13 +164,13 @@
         "start": [
             { text: "新しい情報があったよ", next: "info" },
             { text: "まだよくわからないな……", next: "dontknow" },
-            { text: "とりあえずトップに戻ろう", next: "back" }
+            { text: "【ヒント】このページで何か気になるところある？", next: "back" }
         ],
         "info": { msg: "ほんと！？ そこに書いてあるキーワードとかをまた検索してみたらいいのかな？", next: "start" },
         "dontknow": { msg: "あせらずに、サイトの隅々まで見てみよう！", next: "start" },
-        "back": { msg: "分かった。何か見つけたらすぐに教えてね！", next: "start" }
+        "back": { msg: "うーん…特には…", next: "start" }
     };
-    const pageScenarios = {"start":[{"text":"独り言すら学習されてそうだな","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"とりあえずトップに戻ろう","next":"back"}],"info":{"msg":"お風呂でモノマネ練習してるのも！？恥ずかしい！","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"分かった。何か見つけたらすぐに教えてね！","next":"start"}};
+    const pageScenarios = {"start":[{"text":"独り言すら学習されてそうだな","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"【ヒント】このページで何か気になるところある？","next":"back"}],"info":{"msg":"お風呂でモノマネ練習してるのも！？恥ずかしい！","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…","next":"start"}};
     const scenarios = Object.assign({}, baseScenarios, pageScenarios);
 
     function saveAndRender() {
@@ -213,8 +213,32 @@
 
     function clearChat() {
         if(confirm("通信履歴を消去してリセットしますか？")) {
-            localStorage.removeItem('chatHistory');
+            localStorage.clear();
             window.location.reload();
+        }
+    }
+
+    const pageId = "p59";
+    function triggerAutoSend() {
+        const autoSentKey = 'autoSent_' + pageId;
+        const hasAutoSent = localStorage.getItem(autoSentKey);
+        if (!hasAutoSent) {
+            const startOpts = scenarios["start"];
+            if (Array.isArray(startOpts) && startOpts.length > 0) {
+                const firstOpt = startOpts[0];
+                setTimeout(() => {
+                    chatHistory.push({ sender: 'me', text: firstOpt.text });
+                    saveAndRender();
+                    setTimeout(() => {
+                        const res = scenarios[firstOpt.next];
+                        if (res && res.msg) {
+                            chatHistory.push({ sender: 'yu', text: res.msg });
+                            saveAndRender();
+                        }
+                        localStorage.setItem(autoSentKey, 'true');
+                    }, 800);
+                }, 2000);
+            }
         }
     }
 
@@ -223,7 +247,10 @@
             setTimeout(() => { 
                 chatHistory.push({ sender: 'yu', text: 'めっちゃ観察されてるやん！' }); 
                 saveAndRender(); 
+                setTimeout(triggerAutoSend, 1000);
             }, 1200); 
+        } else {
+            triggerAutoSend();
         }
 
     saveAndRender();

@@ -111,7 +111,7 @@
         </nav>
     </header>
     <div id="content-body">
-        <div class="rich-content secret-content"><div class="secret-content rich-content">
+        <div class="rich-content secret-content">
         <h2 style="margin-top:0;">用語解説：SSVEP（定常状態視覚誘発電位）</h2>
         <p style="color:#888; font-size:0.85rem; margin-bottom:20px;">社内技術資料 ｜ 閲覧制限：研究開発部門</p>
 
@@ -151,7 +151,7 @@
             脳の反応を外部から誘導・計測できるという原理的な可能性については確認済みである。
             今後のAI研究における重要な要素技術になり得ると位置づけている。
         </p>
-</div></div>
+</div>
         <br><br><a href="index.html" id="back-link" style="color: var(--secret-accent);">← トップへ戻る</a>
         </div>
     <div style="margin-top: auto; padding: 15px 30px; display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #eaeaea; border-color: #333; color: #555;">
@@ -175,13 +175,13 @@
         "start": [
             { text: "新しい情報があったよ", next: "info" },
             { text: "まだよくわからないな……", next: "dontknow" },
-            { text: "とりあえずトップに戻ろう", next: "back" }
+            { text: "【ヒント】このページで何か気になるところある？", next: "back" }
         ],
         "info": { msg: "ほんと！？ そこに書いてあるキーワードとかをまた検索してみたらいいのかな？", next: "start" },
         "dontknow": { msg: "あせらずに、サイトの隅々まで見てみよう！", next: "start" },
-        "back": { msg: "分かった。何か見つけたらすぐに教えてね！", next: "start" }
+        "back": { msg: "うーん…特には…", next: "start" }
     };
-    const pageScenarios = {"start":[{"text":"この辺はあんまり参考にならないな…","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"とりあえずトップに戻ろう","next":"back"}],"info":{"msg":"こういうところにこそ私の居場所のヒントが…ないか…","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"分かった。何か見つけたらすぐに教えてね！","next":"start"}};
+    const pageScenarios = {"start":[{"text":"この辺はあんまり参考にならないな…","next":"info"},{"text":"まだよくわからないな……","next":"dontknow"},{"text":"【ヒント】このページで何か気になるところある？","next":"back"}],"info":{"msg":"こういうところにこそ私の居場所のヒントが…ないか…","next":"start"},"dontknow":{"msg":"あせらずに、サイトの隅々まで見てみよう！","next":"start"},"back":{"msg":"うーん…特には…","next":"start"}};
     const scenarios = Object.assign({}, baseScenarios, pageScenarios);
 
     function saveAndRender() {
@@ -224,12 +224,36 @@
 
     function clearChat() {
         if(confirm("通信履歴を消去してリセットしますか？")) {
-            localStorage.removeItem('chatHistory');
+            localStorage.clear();
             window.location.reload();
         }
     }
 
-    
+    const pageId = "p15";
+    function triggerAutoSend() {
+        const autoSentKey = 'autoSent_' + pageId;
+        const hasAutoSent = localStorage.getItem(autoSentKey);
+        if (!hasAutoSent) {
+            const startOpts = scenarios["start"];
+            if (Array.isArray(startOpts) && startOpts.length > 0) {
+                const firstOpt = startOpts[0];
+                setTimeout(() => {
+                    chatHistory.push({ sender: 'me', text: firstOpt.text });
+                    saveAndRender();
+                    setTimeout(() => {
+                        const res = scenarios[firstOpt.next];
+                        if (res && res.msg) {
+                            chatHistory.push({ sender: 'yu', text: res.msg });
+                            saveAndRender();
+                        }
+                        localStorage.setItem(autoSentKey, 'true');
+                    }, 800);
+                }, 2000);
+            }
+        }
+    }
+
+    triggerAutoSend();
 
     saveAndRender();
     showOptions("start");

@@ -1,5 +1,5 @@
 const pagesData = [
-    {
+    /*{
         "id": "p1",
         "searchKey": "-",
         "title": "HOME：公式サイト",
@@ -10,13 +10,13 @@ const pagesData = [
         "secret": false,
         "level": 1,
         "content": "\n        <div class=\"hero-banner\" style=\"text-align:center; padding: 50px 0; background: #f8f9fa;\">\n            <h1 style=\"font-size: 2.5rem; color: #333;\">Welcome to Syn-Cogito</h1>\n            <p style=\"font-size: 1.2rem; color: #666;\">思考の限界を超え、次世代の知能基盤を創り出す。</p>\n        </div>\n        <div class=\"content-section\" style=\"padding: 40px;\">\n            <h2>我々の使命</h2>\n            <p>シン・コギト株式会社は、人工知能の研究開発を専門とするテクノロジー企業です。東京都湊星区に拠点を置き、音声・テキストの自然言語処理から、人間の行動パターン解析まで、幅広い領域でイノベーションを推進しています。</p>\n            <p>我々が提供するのは、ユーザーの日常に自然に溶け込む便利なAIツールです。議事録の自動作成、社内コミュニケーションの円滑化など、現場で役立つソリューションを通じて企業の生産性向上を支援します。</p>\n            <p>本サイトでは、最新の研究成果や各種プロダクトのリリース情報をご案内いたします。製品情報は<a href=\"p7.html\" style=\"color: var(--corp-blue); font-weight: bold;\">こちら</a>をご覧ください。</p>\n        </div>\n    "
-    },
+    },*/
     {
         "id": "p2",
         "searchKey": "-",
         "title": "ニュース：公式サイト",
         "keywords": [
-            "HP更新"
+            ""
         ],
         "desc": "",
         "secret": false,
@@ -28,7 +28,7 @@ const pagesData = [
         "searchKey": "-",
         "title": "会社案内：公式サイト",
         "keywords": [
-            "(会社住所)"
+            "東京都湊星区"
         ],
         "desc": "",
         "secret": false,
@@ -45,7 +45,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -58,7 +58,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "やっぱり住所かな？会社保有の隠し倉庫とかあるかもだし！",
                 "next": "start"
             }
         }
@@ -85,7 +85,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -98,7 +98,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "それはやっぱりこの人でしょ！なんか悪いことしてるんじゃない？",
                 "next": "start"
             }
         }
@@ -125,7 +125,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -138,7 +138,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "この二人以外ないでしょww",
                 "next": "start"
             }
         }
@@ -165,7 +165,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -178,7 +178,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "やっぱりメールアドレスじゃない？私みたいに捕まった人の周囲の人が問合せしてるかも！",
                 "next": "start"
             }
         }
@@ -200,7 +200,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -213,7 +213,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -238,7 +238,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -251,7 +251,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -278,7 +278,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -291,7 +291,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -306,7 +306,7 @@ const pagesData = [
         "desc": "",
         "secret": true,
         "level": 1,
-        "content": "\n    <div class=\"rich-content\">\n        <h2 style=\"margin-top:0;\">研究資料：脳活動制御の可能性</h2>\n        <p style=\"color:#888; font-size:0.85rem; margin-bottom:20px;\">\n            執筆責任者：沖使徒ノルア\n        </p>\n\n        <h3>■ 背景と目的</h3>\n        <p style=\"margin-bottom:20px;\">\n            当社の目標は、AI自身がより高度な学習を自律的に行えるための「土台」を作ることにある。\n            その土台作りの一端として、我々は人間の脳が外部からの刺激にどのように反応するか——\n            特に「特定のリズムで繰り返される視覚的な刺激（定常的な視覚刺激）」に対する脳の反応パターンを\n            詳細に記録・分析していく。\n        </p>\n        <p style=\"margin-bottom:20px;\">\n            脳は、一定の周期でリズミカルに繰り返される視覚刺激に対して、\n            その刺激と同じ周波数の電気的な波形を自動的に発生させるという性質を持つ。\n            この現象を利用することで、脳への情報インプットができる可能性がある。\n        </p>\n\n        <h3>■ 実験概要</h3>\n        <p style=\"margin-bottom:20px;\">\n            本実験では、デジタルディスプレイを通じて特定の周波数の視覚刺激を被験者に提示し、\n            同時に非侵襲型センサーで脳活動（頭皮上の電位変化）を計測する。\n            刺激の周波数を段階的に変化させながら、脳波への影響を比較していく。\n        </p>\n        <div style=\"background: #111; color: #eee; padding: 15px; border-radius: 5px; margin-bottom:20px; border: 1px solid #333;\">\n            <ul style=\"margin:0; padding-left:20px;\">\n                <li style=\"margin-bottom:8px;\">被験者数：延べ24名（社内ボランティアおよび外部協力者）を予定</li>\n                <li style=\"margin-bottom:8px;\">計測手法：非侵襲型の頭皮電極による脳電位記録</li>\n                <li>刺激提示：専用アプリケーション（スマートフォン・PCの画面）を使用する</li>\n            </ul>\n        </div>\n    </div>\n",
+        "content": "\n    <div class=\"rich-content\">\n        <h2 style=\"margin-top:0;\">研究資料：脳活動制御の可能性</h2>\n        <p style=\"color:#888; font-size:0.85rem; margin-bottom:20px;\">\n            執筆責任者：沖使徒ノルア\n        </p>\n\n        <h3>■ 背景と目的</h3>\n        <p style=\"margin-bottom:20px;\">\n            当社の目標は、AI自身がより高度な学習を自律的に行えるための「土台」を作ることにある。\n            その土台作りの一端として、我々は人間の脳が外部からの刺激にどのように反応するか——\n            特に「特定のリズムで繰り返される視覚的な刺激（<strong>定常的な視覚刺激</strong>）」に対する脳の反応パターンを\n            詳細に記録・分析していく。\n        </p>\n        <p style=\"margin-bottom:20px;\">\n            脳は、一定の周期でリズミカルに繰り返される視覚刺激に対して、\n            その刺激と同じ周波数の電気的な波形を自動的に発生させるという性質を持つ。\n            この現象を利用することで、脳への情報インプットができる可能性がある。\n        </p>\n\n        <h3>■ 実験概要</h3>\n        <p style=\"margin-bottom:20px;\">\n            本実験では、デジタルディスプレイを通じて特定の周波数の視覚刺激を被験者に提示し、\n            同時に非侵襲型センサーで脳活動（頭皮上の電位変化）を計測する。\n            刺激の周波数を段階的に変化させながら、脳波への影響を比較していく。\n        </p>\n        <div style=\"background: #111; color: #eee; padding: 15px; border-radius: 5px; margin-bottom:20px; border: 1px solid #333;\">\n            <ul style=\"margin:0; padding-left:20px;\">\n                <li style=\"margin-bottom:8px;\">被験者数：延べ24名（社内ボランティアおよび外部協力者）を予定</li>\n                <li style=\"margin-bottom:8px;\">計測手法：非侵襲型の頭皮電極による脳電位記録</li>\n                <li>刺激提示：専用アプリケーション（スマートフォン・PCの画面）を使用する</li>\n            </ul>\n        </div>\n    </div>\n",
         "pageScenarios": {
             "start": [
                 {
@@ -318,7 +318,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -331,7 +331,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "「定常的な視覚刺激に対する反応パターン」って何だろう？",
                 "next": "start"
             }
         }
@@ -358,7 +358,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -371,7 +371,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -398,7 +398,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -411,7 +411,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -437,7 +437,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -450,7 +450,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -475,7 +475,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -488,20 +488,20 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
     },
     {
         "id": "p15",
-        "searchKey": "SSVEP",
+        "searchKey": "SSVEP｜定常状態視覚誘発電位",
         "title": "用語解説：SSVEP",
         "keywords": [],
         "desc": "",
         "secret": true,
         "level": 2,
-        "content": "<div class=\"secret-content rich-content\">\n        <h2 style=\"margin-top:0;\">用語解説：SSVEP（定常状態視覚誘発電位）</h2>\n        <p style=\"color:#888; font-size:0.85rem; margin-bottom:20px;\">社内技術資料 ｜ 閲覧制限：研究開発部門</p>\n\n        <h3>■ 概要</h3>\n        <p style=\"margin-bottom:20px;\">\n            SSVEP（Steady-State Visual Evoked Potential：定常状態視覚誘発電位）とは、\n            一定の周波数でリズミカルに点滅する光などの視覚刺激を人間に提示したとき、\n            脳の視覚野（後頭部）において、その刺激周波数と同じ周波数の電気的反応（脳波）が\n            定常的に発生する現象のこと。\n        </p>\n        <p style=\"margin-bottom:20px;\">\n            この反応は非常に安定しており、個人差が小さく、\n            かつ外部からの非侵襲的な計測（頭皮上の電極）でも明確に検出できるため、\n            ブレインコンピュータインターフェース（BCI）研究において広く活用されている。\n        </p>\n\n        <h3>■ 基本的なメカニズム</h3>\n        <p style=\"margin-bottom:20px;\">\n            人間が毎秒8〜30回程度の点滅刺激を注視すると、脳は無意識のうちにその点滅に\n            「引っ張られる」形で、同じ周波数の脳波を規則的に発生させる。\n            この同調現象を利用することで、視覚刺激の周波数を変えるだけで、\n            脳の反応パターンを意図的にコントロールできる可能性がある。\n        </p>\n        <div style=\"background: #111; color: #eee; padding: 15px; border-radius: 5px; margin-bottom:20px; border: 1px solid #333;\">\n            <p style=\"margin:0 0 8px; font-weight:bold; color:#00ff00;\">主な活用領域</p>\n            <ul style=\"margin:0; padding-left:20px;\">\n                <li style=\"margin-bottom:6px;\">身体が不自由な方向けの意思伝達装置</li>\n                <li style=\"margin-bottom:6px;\">集中状態・覚醒状態の客観的な測定</li>\n                <li>外部システムへの脳波インターフェース</li>\n            </ul>\n        </div>\n\n        <h3>■ 当社研究との関連</h3>\n        <p>\n            当社では定常的な視覚刺激を用いた脳活動への影響を\n            継続的に調査してきた。現状では精度面での課題が残るものの、\n            脳の反応を外部から誘導・計測できるという原理的な可能性については確認済みである。\n            今後のAI研究における重要な要素技術になり得ると位置づけている。\n        </p>\n</div>",
+        "content": "\n        <h2 style=\"margin-top:0;\">用語解説：SSVEP（定常状態視覚誘発電位）</h2>\n        <p style=\"color:#888; font-size:0.85rem; margin-bottom:20px;\">社内技術資料 ｜ 閲覧制限：研究開発部門</p>\n\n        <h3>■ 概要</h3>\n        <p style=\"margin-bottom:20px;\">\n            SSVEP（Steady-State Visual Evoked Potential：定常状態視覚誘発電位）とは、\n            一定の周波数でリズミカルに点滅する光などの視覚刺激を人間に提示したとき、\n            脳の視覚野（後頭部）において、その刺激周波数と同じ周波数の電気的反応（脳波）が\n            定常的に発生する現象のこと。\n        </p>\n        <p style=\"margin-bottom:20px;\">\n            この反応は非常に安定しており、個人差が小さく、\n            かつ外部からの非侵襲的な計測（頭皮上の電極）でも明確に検出できるため、\n            ブレインコンピュータインターフェース（BCI）研究において広く活用されている。\n        </p>\n\n        <h3>■ 基本的なメカニズム</h3>\n        <p style=\"margin-bottom:20px;\">\n            人間が毎秒8〜30回程度の点滅刺激を注視すると、脳は無意識のうちにその点滅に\n            「引っ張られる」形で、同じ周波数の脳波を規則的に発生させる。\n            この同調現象を利用することで、視覚刺激の周波数を変えるだけで、\n            脳の反応パターンを意図的にコントロールできる可能性がある。\n        </p>\n        <div style=\"background: #111; color: #eee; padding: 15px; border-radius: 5px; margin-bottom:20px; border: 1px solid #333;\">\n            <p style=\"margin:0 0 8px; font-weight:bold; color:#00ff00;\">主な活用領域</p>\n            <ul style=\"margin:0; padding-left:20px;\">\n                <li style=\"margin-bottom:6px;\">身体が不自由な方向けの意思伝達装置</li>\n                <li style=\"margin-bottom:6px;\">集中状態・覚醒状態の客観的な測定</li>\n                <li>外部システムへの脳波インターフェース</li>\n            </ul>\n        </div>\n\n        <h3>■ 当社研究との関連</h3>\n        <p>\n            当社では定常的な視覚刺激を用いた脳活動への影響を\n            継続的に調査してきた。現状では精度面での課題が残るものの、\n            脳の反応を外部から誘導・計測できるという原理的な可能性については確認済みである。\n            今後のAI研究における重要な要素技術になり得ると位置づけている。\n        </p>\n",
         "pageScenarios": {
             "start": [
                 {
@@ -513,7 +513,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -526,7 +526,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -553,7 +553,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -566,7 +566,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -585,7 +585,7 @@ const pagesData = [
         "pageScenarios": {
             "start": [
                 {
-                    "text": "これはあんまり関係ないな",
+                    "text": "チャット内容はあんまり関係なさそうだな",
                     "next": "info"
                 },
                 {
@@ -593,7 +593,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -606,7 +606,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "ヒスタからリンにチャット送ったり、ノルアからリンに送ったりしてそうだよね？それも見れたらいいけど…",
                 "next": "start"
             }
         }
@@ -633,7 +633,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -646,7 +646,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -673,7 +673,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -686,7 +686,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -713,7 +713,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -726,7 +726,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "『真に汎用的な知能』って何だろう？気になる！",
                 "next": "start"
             }
         }
@@ -753,7 +753,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -766,7 +766,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -776,7 +776,7 @@ const pagesData = [
         "searchKey": "リンtoヒスタ",
         "title": "長期休暇のご連絡",
         "keywords": [
-            "Signal_Army(個人フォルダのpass)"
+            "SignalArmy"
         ],
         "desc": "",
         "secret": true,
@@ -793,7 +793,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -806,7 +806,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -833,7 +833,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -846,7 +846,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -873,7 +873,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -886,7 +886,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -911,7 +911,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -924,7 +924,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -951,7 +951,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -964,7 +964,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -989,7 +989,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1002,7 +1002,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -1027,7 +1027,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1040,7 +1040,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -1065,7 +1065,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1078,7 +1078,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -1105,7 +1105,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1118,7 +1118,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "二つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1145,7 +1145,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1158,7 +1158,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1183,7 +1183,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1196,7 +1196,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -1223,7 +1223,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1236,7 +1236,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "社長のメアドだったり新しい人の名前だったり、何かに使えないかな？",
                 "next": "start"
             }
         }
@@ -1245,11 +1245,13 @@ const pagesData = [
         "id": "p34",
         "searchKey": "総務部",
         "title": "【再周知】個人フォルダの設定について",
-        "keywords": [],
+        "keywords": [
+        	"NAS個人フォルダ"
+        ],
         "desc": "",
         "secret": true,
         "level": 3,
-        "content": "\n    <div class=\"rich-content\">\n        <h2 style=\"margin-top:0;\">【再周知】個人フォルダの設定について</h2>\n        <div style=\"background: #f0f4f8; border-left: 4px solid #0056b3; padding: 15px; border-radius: 0 5px 5px 0; margin-bottom: 20px;\">\n            <p style=\"margin:0; font-size:0.85rem; color:#555;\">\n                投稿者：縁下リキ（総務部）｜ 掲載日時：2023/04/03 14:20\n            </p>\n        </div>\n        \n        <p>お疲れ様です。総務部の縁下です。</p>\n        <p>社内共有サーバー上の個人用ストレージ領域（個人フォルダ）について、改めて基本的な仕様と設定方法をご案内いたします。</p>\n\n        <h3>■ パスコードによるアクセス制限とフォルダ切り替え</h3>\n        <p>個人用ストレージのセキュリティ強化および利便性向上のため、個人フォルダの入り口にてパスコードによるアクセス制限が設定されています。</p>\n        <p>今回のシステム刷新に伴い、単一の認証窓口（個人フォルダの入り口）に対し、入力するパスコードの種類によって、展開されるストレージ領域（フォルダ）が動的に切り替わる仕様が導入されました。一つの入り口から、入力したパスコードに応じて異なるフォルダを開くことができますので、業務用の共有領域や個人用の暗号化領域など、用途に合わせてご活用ください。</p>\n\n        <h3>■ パスコードヒント表示機能</h3>\n        <p>万が一設定したパスコードを忘れてしまった場合に備え、設定画面にて「ヒント」を登録しておくことが可能です。パスコード入力画面にてヒントを表示させることができますので、こちらも併せてご活用ください。</p>\n\n        <p style=\"margin-top:20px;\">システム刷新に伴い古い設定はリセットされておりますので、お手数ですが各自フォルダの設定変更およびパスコードの割り当てをお願いいたします。</p>\n    </div>\n",
+        "content": "\n    <div class=\"rich-content\">\n        <h2 style=\"margin-top:0;\">【再周知】個人フォルダの設定について</h2>\n        <div style=\"background: #f0f4f8; border-left: 4px solid #0056b3; padding: 15px; border-radius: 0 5px 5px 0; margin-bottom: 20px;\">\n            <p style=\"margin:0; font-size:0.85rem; color:#555;\">\n                投稿者：縁下リキ（総務部）｜ 掲載日時：2023/04/03 14:20\n            </p>\n        </div>\n        \n        <p>お疲れ様です。総務部の縁下です。</p>\n        <p>社内共有サーバー上の個人用ストレージ領域（NAS個人フォルダ）について、改めて基本的な仕様と設定方法をご案内いたします。</p>\n\n        <h3>■ パスコードによるアクセス制限とフォルダ切り替え</h3>\n        <p>個人用ストレージのセキュリティ強化および利便性向上のため、個人フォルダの入り口にてパスコードによるアクセス制限が設定されています。</p>\n        <p>今回のシステム刷新に伴い、単一の認証窓口（個人フォルダの入り口）に対し、入力するパスコードの種類によって、展開されるストレージ領域（フォルダ）が動的に切り替わる仕様が導入されました。一つの入り口から、入力したパスコードに応じて異なるフォルダを開くことができますので、業務用の共有領域や個人用の暗号化領域など、用途に合わせてご活用ください。</p>\n\n        <h3>■ パスコードヒント表示機能</h3>\n        <p>万が一設定したパスコードを忘れてしまった場合に備え、設定画面にて「ヒント」を登録しておくことが可能です。パスコード入力画面にてヒントを表示させることができますので、こちらも併せてご活用ください。</p>\n\n        <p style=\"margin-top:20px;\">システム刷新に伴い古い設定はリセットされておりますので、お手数ですが各自フォルダの設定変更およびパスコードの割り当てをお願いいたします。</p>\n    </div>\n",
         "pageScenarios": {
             "start": [
                 {
@@ -1261,7 +1263,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1274,7 +1276,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "個人フォルダにアクセスできれば何か分かるかも...？",
                 "next": "start"
             }
         }
@@ -1301,7 +1303,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1314,7 +1316,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1341,7 +1343,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1354,7 +1356,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "会食のお礼メール…怪しい！",
                 "next": "start"
             }
         }
@@ -1381,7 +1383,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1394,7 +1396,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1421,7 +1423,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1434,7 +1436,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1461,7 +1463,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1474,7 +1476,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -1484,7 +1486,7 @@ const pagesData = [
         "searchKey": "小津山教授",
         "title": "【研修用抜粋】論文∶脳ハーモナイズによる自律神経調整法の検討",
         "keywords": [
-            "脳ハーモナイズ"
+            "脳ハーモナイズ|ASSR"
         ],
         "desc": "",
         "secret": true,
@@ -1501,7 +1503,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1514,7 +1516,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "二つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1541,7 +1543,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1554,7 +1556,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "二つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1580,7 +1582,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1593,7 +1595,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -1620,7 +1622,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1633,7 +1635,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "どうだろう…ノルアのアドレスは判明したけど…",
                 "next": "start"
             }
         }
@@ -1660,7 +1662,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1673,7 +1675,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1700,7 +1702,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1713,7 +1715,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1738,7 +1740,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1751,7 +1753,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -1766,7 +1768,7 @@ const pagesData = [
         "desc": "",
         "secret": true,
         "level": 4,
-        "content": "\n    <div class=\"secret-content rich-content\" style=\"background: #000; color: #fff; padding: 30px; line-height: 1.8;\">\n        <h2 style='margin-top:0; color: var(--secret-accent);'>研究資料：脳活動制御の可能性 #4</h2>\n        <p style=\"color:#888; font-size:0.85rem; margin-bottom:20px;\">\n            執筆責任者：沖使徒ノルア\n        </p>\n\n        <h3>■ 概要</h3>\n        <p style=\"margin-bottom:20px;\">\n            本レポートは、二次募集にて集めた被験者（S001〜S100）を対象に行われた、SSVEP（定常状態視覚誘発電位）およびASSR（聴覚定常反応）を組み合わせたクロスモーダル（複合）刺激実験とS050に対する追加実験の解析結果および考察である。私たちが実現を目指している脳へのAIインストールプロセスの進捗について報告する。\n        </p>\n\n        <h3>■ 実験結果：複合刺激の効果</h3>\n        <p style=\"margin-bottom:20px;\">\n            小津山教授の論文の実験プロトコルと同様に、SSVEP（視覚刺激）とASSR（聴覚刺激）を同期させて複合提示した結果、単一提示の場合と比較して脳波の同調率が統計的に有意に向上した。自律神経の指標である心拍変動（HRV）も顕著に改善し、セッション終了後も数時間にわたってその調整効果が維持された。これにより、クロスモーダル刺激によって脳波を意図した状態へ誘導し、脳へのAIエントリーを行うための基盤は確認できた。なお、被験者ごとのデータを精査した結果、特にS050は他の被験者と比較して同調率が極めて優秀であり、シグナルのエントリーも最も顕著に観測された。\n        </p>\n\n        <h3>■ 課題：シナプス可塑性による消失</h3>\n        <p style=\"margin-bottom:20px;\">\n            しかしながら、脳波同調によるAIエントリー（情報インプット）自体の持続性には大きな課題が残った。\n        </p>\n        <p style=\"margin-bottom:20px;\">\n            同調自体は数時間持続するものの、脳回路の恒常性維持機構であるシナプスの可塑性（Synaptic Plasticity）が働くためか、外部からインプットされたエントリー信号そのものは脳回路の適応によって速やかに上書きされ、消失した模様である。\n        </p>\n\n        <h3>■ 今後の方針</h3>\n        <p style=\"margin-bottom:20px;\">\n            このシナプス可塑性による消失現象を打開するためのアプローチを検討するため、本技術の基礎理論となった元論文の著者である小津山教授にメールで意見を仰ぐこととする。\n        </p>\n    </div>\n    ",
+        "content": "\n    <div class=\"secret-content rich-content\" style=\"background: #000; color: #fff; padding: 30px; line-height: 1.8;\">\n        <h2 style='margin-top:0; color: var(--secret-accent);'>研究資料：脳活動制御の可能性 #4</h2>\n        <p style=\"color:#888; font-size:0.85rem; margin-bottom:20px;\">\n            執筆責任者：沖使徒ノルア\n        </p>\n\n        <h3>■ 概要</h3>\n        <p style=\"margin-bottom:20px;\">\n            本レポートは、二次募集にて集めた被験者（S001〜S100）を対象に行われた、SSVEP（定常状態視覚誘発電位）およびASSR（聴覚定常反応）を組み合わせたクロスモーダル（複合）刺激実験とS050に対する追加実験の解析結果および考察である。私たちが実現を目指している脳へのAIインストールプロセスの進捗について報告する。\n        </p>\n\n        <h3>■ 実験結果：複合刺激の効果</h3>\n        <p style=\"margin-bottom:20px;\">\n            小津山教授の論文の実験プロトコルと同様に、SSVEP（視覚刺激）とASSR（聴覚刺激）を同期させて複合提示した結果、単一提示の場合と比較して脳波の同調率が統計的に有意に向上した。自律神経の指標である心拍変動（HRV）も顕著に改善し、セッション終了後も数時間にわたってその調整効果が維持された。これにより、クロスモーダル刺激によって脳波を意図した状態へ誘導し、脳へのAIエントリーを行うための基盤は確認できた。なお、被験者ごとのデータを精査した結果、特にS050は他の被験者と比較して同調率が極めて優秀であり、シグナルのエントリーも最も顕著に観測された。\n        </p>\n\n        <h3>■ 課題：シナプス可塑性による消失</h3>\n        <p style=\"margin-bottom:20px;\">\n            しかしながら、脳波同調によるAIエントリー（情報インプット）自体の持続性には大きな課題が残った。\n        </p>\n        <p style=\"margin-bottom:20px;\">\n            同調自体は数時間持続するものの、脳回路の恒常性維持機構であるシナプスの可塑性（Synaptic Plasticity）が働くためか、外部からインプットされたエントリー信号そのものは脳回路の適応によって速やかに上書きされ、消失した模様である。\n        </p>\n\n        <h3>■ 今後の方針</h3>\n        <p style=\"margin-bottom:20px;\">\n            このシナプス可塑性による消失現象を打開するためのアプローチを検討するため、本技術の基礎理論となった『脳ハーモナイズ』の元論文の著者である小津山教授にメールで意見を仰ぐこととする。\n        </p>\n    </div>\n    ",
         "pageScenarios": {
             "start": [
                 {
@@ -1778,7 +1780,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1791,7 +1793,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "教授に送ったメールどこかにないかな？",
                 "next": "start"
             }
         }
@@ -1818,7 +1820,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1831,7 +1833,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "二つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1858,7 +1860,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1871,7 +1873,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1884,7 +1886,7 @@ const pagesData = [
         "desc": "",
         "secret": true,
         "level": 4,
-        "content": "\n    <div class=\"secret-content rich-content\" style=\"background: #000; color: #fff; padding: 30px; display: flex; justify-content: center; box-sizing: border-box;\">\n        <div style=\"background: #fff; color: #000; width: 100%; max-width: 600px; padding: 40px; border-radius: 4px; box-shadow: 0 4px 15px rgba(255,255,255,0.1); font-family: 'Hiragino Mincho ProN', 'MS Mincho', serif; box-sizing: border-box; text-align: left;\">\n            <div style=\"text-align: right; font-size: 0.85rem; margin-bottom: 20px; color: #333;\">\n                東電理倫第 2022-094号<br>\n                2022年10月25日\n            </div>\n            \n            <h2 style=\"text-align: center; margin-bottom: 40px; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 10px; color: #000;\">倫理審査結果通知書</h2>\n            \n            <p style=\"margin-bottom: 30px; font-size: 1rem;\">\n                シン・コギト株式会社<br>\n                代表取締役 遠藤ヒスタ 殿\n            </p>\n            \n            <p style=\"text-align: right; margin-bottom: 40px; font-size: 1rem; font-weight: bold;\">\n                東都電脳理工大学倫理委員会<br>\n                委員長 林リヒト\n            </p>\n            \n            <p style=\"margin-bottom: 20px; text-indent: 1em; font-size: 0.95rem; line-height: 1.6;\">\n                貴社より申請のあった下記の臨床実験計画について、本委員会において審査を行った結果、倫理的観点から問題ないと判断し、以下の通り実施を許諾します。\n            </p>\n            \n            <div style=\"border: 1px solid #000; padding: 20px; margin-top: 30px; font-family: sans-serif; line-height: 1.8; font-size: 0.95rem;\">\n                <p style=\"margin: 0 0 12px 0;\"><strong>【実験名称】</strong><br>ヒトの脳を介したAGI開発実験</p>\n                <p style=\"margin: 0 0 12px 0;\"><strong>【実施期間】</strong><br>許諾日より10年間</p>\n                <p style=\"margin: 0;\"><strong>【判定結果】</strong><br>承認（条件なし）</p>\n            </div>\n            \n            <div style=\"margin-top: 50px; font-size: 0.8rem; text-align: center; color: #666; font-family: sans-serif;\">\n                [本通知書はシステムより電子的に発行されたPDFファイルです]\n            </div>\n        </div>\n    </div>\n    ",
+        "content": "\n    <div class=\"secret-content rich-content\" style=\"background: #000; color: #fff; padding: 30px; display: flex; justify-content: center; box-sizing: border-box;\">\n        <div style=\"background: #fff; color: #000; width: 100%; max-width: 600px; padding: 40px; border-radius: 4px; box-shadow: 0 4px 15px rgba(255,255,255,0.1); font-family: 'Hiragino Mincho ProN', 'MS Mincho', serif; box-sizing: border-box; text-align: left;\">\n            <div style=\"text-align: right; font-size: 0.85rem; margin-bottom: 20px; color: #333;\">\n                東電理倫第 2022-094号<br>\n                2022年10月25日\n            </div>\n            \n            <h2 style=\"text-align: center; margin-bottom: 40px; font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 10px; color: #000;\">倫理審査結果通知書</h2>\n            \n            <p style=\"margin-bottom: 30px; font-size: 1rem;\">\n                シン・コギト株式会社<br>\n                代表取締役 遠藤ヒスタ 殿\n            </p>\n            \n            <p style=\"text-align: right; margin-bottom: 40px; font-size: 1rem; font-weight: bold;\">\n                東都電脳理工大学倫理委員会<br>\n                委員長 林リヒト\n            </p>\n            \n            <p style=\"margin-bottom: 20px; text-indent: 1em; font-size: 0.95rem; line-height: 1.6;\">\n                貴社より申請のあった下記の臨床実験計画について、本委員会において審査を行った結果、倫理的観点から問題ないと判断し、以下の通り実施を許諾します。\n            </p>\n            \n            <div style=\"border: 1px solid #000; padding: 20px; margin-top: 30px; font-family: sans-serif; line-height: 1.8; font-size: 0.95rem;\">\n                <p style=\"margin: 0 0 12px 0;\"><strong>【実験名称】</strong><br>ヒトの脳を介したAI開発実験</p>\n                <p style=\"margin: 0 0 12px 0;\"><strong>【実施期間】</strong><br>許諾日より10年間</p>\n                <p style=\"margin: 0;\"><strong>【判定結果】</strong><br>承認（条件なし）</p>\n            </div>\n            \n            <div style=\"margin-top: 50px; font-size: 0.8rem; text-align: center; color: #666; font-family: sans-serif;\">\n                [本通知書はシステムより電子的に発行されたPDFファイルです]\n            </div>\n        </div>\n    </div>\n    ",
         "pageScenarios": {
             "start": [
                 {
@@ -1896,7 +1898,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1909,7 +1911,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -1924,7 +1926,7 @@ const pagesData = [
         "desc": "",
         "secret": true,
         "level": 4,
-        "content": "\n        <div class=\"content-section\" style=\"padding: 40px;\">\n            <h2 style='margin-top:0;'>ニュース：資金調達のお知らせ詳細（HPアーカイブス）</h2>\n            <p><strong>2022年 12月 15日</strong></p>\n            <p>シン・コギト株式会社は、次世代AGI（汎用人工知能）の研究開発をさらに加速させるため、大手投資ファンドおよび複数の事業会社を引受先とする第三者割当増資を実施し、総額1億円の資金調達を完了したことをお知らせいたします。</p>\n            <p><strong>■ 資金調達の目的</strong></p>\n            <ul>\n                <li>生体データ解析用サーバー群「Syn-Core」の国内最大規模への拡張</li>\n                <li>次世代AGI開発向けたさらなる実験環境の整備</li>\n                <li>優秀な研究者およびエンジニアのさらなる採用強化</li>\n            </ul>\n            <p>我々は、この資金を元に「人間とAIの真の融合」という人類の夢を、数年以内に現実のものといたします。今後のシン・コギトの飛躍にご期待ください。</p>\n        </div>\n    ",
+        "content": "\n        <div class=\"content-section\" style=\"padding: 40px;\">\n            <h2 style='margin-top:0;'>ニュース：資金調達のお知らせ詳細（HPアーカイブス）</h2>\n            <p><strong>2022年 12月 15日</strong></p>\n            <p>シン・コギト株式会社は、次世代AI（汎用人工知能）の研究開発をさらに加速させるため、大手投資ファンドおよび複数の事業会社を引受先とする第三者割当増資を実施し、総額1億円の資金調達を完了したことをお知らせいたします。</p>\n            <p><strong>■ 資金調達の目的</strong></p>\n            <ul>\n                <li>生体データ解析用サーバー群「Syn-Core」の国内最大規模への拡張</li>\n                <li>次世代AI開発向けたさらなる実験環境の整備</li>\n                <li>優秀な研究者およびエンジニアのさらなる採用強化</li>\n            </ul>\n            <p>我々は、この資金を元に「人間とAIの真の融合」という人類の夢を、数年以内に現実のものといたします。今後のシン・コギトの飛躍にご期待ください。</p>\n        </div>\n    ",
         "pageScenarios": {
             "start": [
                 {
@@ -1936,7 +1938,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1949,7 +1951,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -1977,7 +1979,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -1990,7 +1992,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "二つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -2018,7 +2020,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -2031,7 +2033,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "美空セシル一択！",
                 "next": "start"
             }
         }
@@ -2054,7 +2056,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -2067,7 +2069,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -2094,7 +2096,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -2107,7 +2109,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -2122,7 +2124,7 @@ const pagesData = [
         "desc": "",
         "secret": true,
         "level": 5,
-        "content": "\n        <div class=\"secret-content rich-content\">\n            <h2 style='margin-top:0;'>【社外秘】事業計画書：プロジェクトYKP</h2>\n            <p>シン・コギト株式会社 最高機密文書</p>\n            <hr style=\"border-color: #333; margin: 20px 0;\">\n            \n            <h3>1. プロジェクト目的</h3>\n            <p>\n                特異な発声特性を持つ対象者（YKP）の脳に、社内で独自に開発を進めていたAIモデル「5years」をインストールし、実環境下におけるAIの自己成長プロセスを検証する。\n            </p>\n\n            <h3>2. AGI「5years」の動作仕様</h3>\n            <p>\n                インストールされる「5years」は、ヒトの脳活動や知覚プロセスを直接「観察」することにより、従来のデータセット学習を遥かに凌駕する効率での自己成長を行う。\n            </p>\n\n            <h3>3. 安全性および非介入の原則</h3>\n            <p>\n                本AIは「純粋な観察型モジュール」として設計されており、基本的に対象者の思考プロセスに介入したり、意識や行動に影響を与えたり、洗脳を行ったりする機能は一切含まない（アプリ使用を促したり、定期的なAIのエクスポートのために発声調整することはある）。対象者の自律性を完全に尊重した状態で観察データのみを蓄積する。\n            </p>\n\n            <h3>4. 今後の運用と経過観察</h3>\n            <p>\n                インストール実行後は、定期的に対象者の経過観察セッションを設け、脳活動への影響やAIの成長状況を多角的に見極めていく。観察結果に基づいて、プロジェクトの安全性と進行スケジュールを慎重に管理する。\n            </p>\n\n            <h3>5. 専用デバイス「Vocal-Sync」の仕様と実態</h3>\n            <p>\n                本プロジェクトにおけるAIの定着およびデータ抽出のインターフェースとして、専用アプリケーション／デバイス「Vocal-Sync」を用いる。その仕様および真の役割は以下の通り。\n            </p>\n            <ul style=\"line-height: 1.8; padding-left: 20px;\">\n                <li>・表向きの機能：視覚と聴覚への外部刺激、および音に合わせた発声を行うことで、自律神経を整えて理想の自分になれるセルフケア用アプリケーションとして市場へ展開する。</li>\n                <li>・実際の機能とメカニズム：提示される視覚と聴覚の特定刺激パターンをトリガーとして、AI「5years」を対象者の脳へインストールする。定期的なアプリの使用を促すことで、シナプスの恒常性維持機能によるAIの消滅を防ぐ。同時に、対象者がアプリで行う日々の発声練習プロトコルを通じて、AIが対象者の脳から学習したデータを外部へエクスポート（抽出）する。なお、表向きの謳い文句である自律神経の調整効果は、本プロセスに伴う副次的・偶発的な作用に過ぎない。</li>\n                <li>・技術的系譜：前身となるデバイス「Brain-Linker」の基盤システムに、対象者の発声データおよびAI学習情報のエクスポート機能を新たに追加・統合した拡張モデルである。</li>\n            </ul>\n        </div>\n    ",
+        "content": "\n        <div class=\"secret-content rich-content\">\n            <h2 style='margin-top:0;'>【社外秘】事業計画書：プロジェクトYKP</h2>\n            <p>シン・コギト株式会社 最高機密文書</p>\n            <hr style=\"border-color: #333; margin: 20px 0;\">\n            \n            <h3>1. プロジェクト目的</h3>\n            <p>\n                特異な発声特性を持つ対象者（YKP）の脳に、社内で独自に開発を進めていたAIモデル「5years」をインストールし、実環境下におけるAIの自己成長プロセスを検証する。\n            </p>\n\n            <h3>2. AI「5years」の動作仕様</h3>\n            <p>\n                インストールされる「5years」は、ヒトの脳活動や知覚プロセスを直接「観察」することにより、従来のデータセット学習を遥かに凌駕する効率での自己成長を行う。\n            </p>\n\n            <h3>3. 安全性および非介入の原則</h3>\n            <p>\n                本AIは「純粋な観察型モジュール」として設計されており、基本的に対象者の思考プロセスに介入したり、意識や行動に影響を与えたり、洗脳を行ったりする機能は一切含まない（アプリ使用を促したり、定期的なAIのエクスポートのために発声調整することはある）。対象者の自律性を完全に尊重した状態で観察データのみを蓄積する。\n            </p>\n\n            <h3>4. 今後の運用と経過観察</h3>\n            <p>\n                インストール実行後は、定期的に対象者の経過観察セッションを設け、脳活動への影響やAIの成長状況を多角的に見極めていく。観察結果に基づいて、プロジェクトの安全性と進行スケジュールを慎重に管理する。\n            </p>\n\n            <h3>5. 専用デバイス「Vocal-Sync」の仕様と実態</h3>\n            <p>\n                本プロジェクトにおけるAIの定着およびデータ抽出のインターフェースとして、専用アプリケーション／デバイス「Vocal-Sync」を用いる。その仕様および真の役割は以下の通り。\n            </p>\n            <ul style=\"line-height: 1.8; padding-left: 20px;\">\n                <li>・表向きの機能：視覚と聴覚への外部刺激、および音に合わせた発声を行うことで、自律神経を整えて理想の自分になれるセルフケア用アプリケーションとして市場へ展開する。</li>\n                <li>・実際の機能とメカニズム：提示される視覚と聴覚の特定刺激パターンをトリガーとして、AI「5years」を対象者の脳へインストールする。定期的なアプリの使用を促すことで、シナプスの恒常性維持機能によるAIの消滅を防ぐ。同時に、対象者がアプリで行う日々の発声練習プロトコルを通じて、AIが対象者の脳から学習したデータを外部へエクスポート（抽出）する。なお、表向きの謳い文句である自律神経の調整効果は、本プロセスに伴う副次的・偶発的な作用に過ぎない。</li>\n                <li>・技術的系譜：前身となるデバイス「Brain-Linker」の基盤システムに、対象者の発声データおよびAI学習情報のエクスポート機能を新たに追加・統合した拡張モデルである。</li>\n            </ul>\n        </div>\n    ",
         "pageScenarios": {
             "start": [
                 {
@@ -2134,7 +2136,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -2147,7 +2149,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }
@@ -2172,7 +2174,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -2185,7 +2187,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -2193,12 +2195,12 @@ const pagesData = [
     {
         "id": "p58",
         "searchKey": "5years",
-        "title": "開発中AGIについて",
+        "title": "開発中AIについて",
         "keywords": [],
         "desc": "",
         "secret": true,
         "level": 5,
-        "content": "\n        <div class=\"secret-content rich-content\">\n            <h2 style='margin-top:0;'>開発中AGI『5years』について</h2>\n            <p>シン・コギト社内説明資料</p>\n            <hr style=\"border-color: #333; margin: 20px 0;\">\n\n            <h3>1. 開発コードの由来</h3>\n            <p>\n                開発コード：5years（ファイブイヤーズ）<br>\n                名称の由来：現段階での基本知能レベルが「人間の5歳児と同等」であることに由来する。\n                5歳児は人間の成長において極めて高い言語習得能力と環境適応能力を発揮する時期であり、本AIシステムもこの発達段階特有の柔軟な学習アルゴリズムを基礎設計に採用している。\n            </p>\n\n            <h3>2. 『5years』の知能特性</h3>\n            <ul>\n                <li><strong>高度な記号接地力：</strong>言語と現実の物体や概念を自発的に結びつけることができ、日常的な対話であれば自然に応答することが可能。</li>\n                <li><strong>直感的な物理・空間認識：</strong>視覚および環境データから、5歳児と同等の直感的な物理的ルール（物が落ちる、障害物を避けるなど）を自律的に学習している。</li>\n                <li><strong>心の理論の初期段階：</strong>他者の意図や感情を部分的に推測する基本モジュールが動作し始めており、単純なコミュニケーションにおける「相手の意図」の読み取りが可能。</li>\n            </ul>\n\n            <h3>3. ヒトの脳を介した成長アプローチ</h3>\n            <p>\n                5yearsは静的なテキストデータや画像データのみによる学習では突破できない「常識の壁」を乗り越えるため、ヒトの脳（知覚プロセス）と接続し、脳が外界を処理する様子を直接観察するアプローチをとる。\n                これにより、人間が何年もかけて獲得する「常識」や「直感」を、極めて短期間かつ効率的に吸収し、高次の汎用人工知能（AGI）へと成長することを目指している。\n            </p>\n        </div>\n    ",
+        "content": "\n        <div class=\"secret-content rich-content\">\n            <h2 style='margin-top:0;'>開発中AI『5years』について</h2>\n            <p>シン・コギト社内説明資料</p>\n            <hr style=\"border-color: #333; margin: 20px 0;\">\n\n            <h3>1. 開発コードの由来</h3>\n            <p>\n                開発コード：5years（ファイブイヤーズ）<br>\n                名称の由来：現段階での基本知能レベルが「人間の5歳児と同等」であることに由来する。\n                5歳児は人間の成長において極めて高い言語習得能力と環境適応能力を発揮する時期であり、本AIシステムもこの発達段階特有の柔軟な学習アルゴリズムを基礎設計に採用している。\n            </p>\n\n            <h3>2. 『5years』の知能特性</h3>\n            <ul>\n                <li><strong>高度な記号接地力：</strong>言語と現実の物体や概念を自発的に結びつけることができ、日常的な対話であれば自然に応答することが可能。</li>\n                <li><strong>直感的な物理・空間認識：</strong>視覚および環境データから、5歳児と同等の直感的な物理的ルール（物が落ちる、障害物を避けるなど）を自律的に学習している。</li>\n                <li><strong>心の理論の初期段階：</strong>他者の意図や感情を部分的に推測する基本モジュールが動作し始めており、単純なコミュニケーションにおける「相手の意図」の読み取りが可能。</li>\n            </ul>\n\n            <h3>3. ヒトの脳を介した成長アプローチ</h3>\n            <p>\n                5yearsは静的なテキストデータや画像データのみによる学習では突破できない「常識の壁」を乗り越えるため、ヒトの脳（知覚プロセス）と接続し、脳が外界を処理する様子を直接観察するアプローチをとる。\n                これにより、人間が何年もかけて獲得する「常識」や「直感」を、極めて短期間かつ効率的に吸収し、高次の汎用人工知能へと成長することを目指している。\n            </p>\n        </div>\n    ",
         "pageScenarios": {
             "start": [
                 {
@@ -2210,7 +2212,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -2223,7 +2225,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん…特には…",
                 "next": "start"
             }
         }
@@ -2232,11 +2234,13 @@ const pagesData = [
         "id": "p59",
         "searchKey": "5years",
         "title": "経過観察#1",
-        "keywords": [],
+        "keywords": [
+        	"定期配信"
+        ],
         "desc": "",
         "secret": true,
         "level": 5,
-        "content": "\n        <div class=\"secret-content rich-content\">\n            <h2 style='margin-top:0;'>経過観察 #1</h2>\n            <div style=\"background: #1a1a1a; padding: 15px; border-radius: 5px; margin-bottom: 20px;\">\n                <p>対象者：YKP</p>\n                <p>記録者：沖使徒ノルア</p>\n            </div>\n            <h3>観察記録</h3>\n            <p>\n                被験者の脳内へAGI「5years」をインストールして以降、定期的な経過観察を行っている。\n                被験者にはVocal-Syncを日常生活で定期的に使用してもらっており、利用頻度が高く保たれているため、AIの定着状況は極めて良好である。\n            </p>\n            <p>\n                被験者は日常生活において、職場での人間関係、ネットでのライブ配信活動、音声メディアでのポッドキャスト収録など、多様な社会的・認知的活動を行っている。\n                脳内にインストールされた「5years」は、これら多様なコンテキストにおける被験者の脳活動（知覚・反応・情動プロセス）を直接観察することで、膨大なマルチモーダルデータを効率よく学習できている。\n                結果として、当初の予測を大幅に上回るスピードでAIの自己進化が進んでいる。\n            </p>\n            <p>\n                特に、定期配信における「ゲーム配信」や「歌配信」の最中に、リアルタイムで視聴者から寄せられるコメントへの反応や対話プロセスは、AIにとって極めて高密度で貴重な学習データとなっている。\n                他者の感情を推し量り、それに対して最適なアウトプットを生成するプロトコルの高度化に大きく寄与している。\n            </p>\n\n            \n            <div style=\"margin: 40px 0 20px 0; padding: 25px; border: 1px dashed var(--secret-accent, #20c20e); background-color: rgba(32, 194, 14, 0.05); border-radius: 6px; text-align: center;\">\n                <p style=\"color: var(--secret-accent, #20c20e); font-weight: bold; font-size: 1.15rem; margin: 0 0 12px 0; letter-spacing: 1px;\">【 前半ステージ クリア 】</p>\n                <p style=\"color: #e0e0e0; font-size: 0.95rem; margin: 0; line-height: 1.7; font-family: sans-serif;\">おめでとうございます！ 前半ステージの全59ページをすべて発見しました。<br>物語が大きく動き出す【後半ステージ】の公開を、楽しみにお待ちください。</p>\n            </div>\n\n         </div>\n",
+        "content": "\n        <div class=\"secret-content rich-content\">\n            <h2 style='margin-top:0;'>経過観察 #1</h2>\n            <div style=\"background: #1a1a1a; padding: 15px; border-radius: 5px; margin-bottom: 20px;\">\n                <p>対象者：YKP</p>\n                <p>記録者：沖使徒ノルア</p>\n            </div>\n            <h3>観察記録</h3>\n            <p>\n                被験者の脳内へAI「5years」をインストールして以降、定期的な経過観察を行っている。\n                被験者にはVocal-Syncを日常生活で定期的に使用してもらっており、利用頻度が高く保たれているため、AIの定着状況は極めて良好である（AIの影響か配信活動時に「5歳児設定」を使用するようになっている）。\n            </p>\n            <p>\n                被験者は日常生活において、職場での人間関係、ネットでのライブ配信活動、音声メディアでのポッドキャスト収録など、多様な社会的・認知的活動を行っている。\n                脳内にインストールされた「5years」は、これら多様なコンテキストにおける被験者の脳活動（知覚・反応・情動プロセス）を直接観察することで、膨大なマルチモーダルデータを効率よく学習できている。\n                結果として、当初の予測を大幅に上回るスピードでAIの自己進化が進んでいる。\n            </p>\n            <p>\n                特に、定期配信における「ゲーム配信」や「歌配信」の最中に、リアルタイムで視聴者から寄せられるコメントへの反応や対話プロセスは、AIにとって極めて高密度で貴重な学習データとなっている。\n                他者の感情を推し量り、それに対して最適なアウトプットを生成するプロトコルの高度化に大きく寄与している。\n            </p>\n\n            \n            <div style=\"margin: 40px 0 20px 0; padding: 25px; border: 1px dashed var(--secret-accent, #20c20e); background-color: rgba(32, 194, 14, 0.05); border-radius: 6px; text-align: center;\">\n                <p style=\"color: var(--secret-accent, #20c20e); font-weight: bold; font-size: 1.15rem; margin: 0 0 12px 0; letter-spacing: 1px;\">【 前半ステージ クリア 】</p>\n                <p style=\"color: #e0e0e0; font-size: 0.95rem; margin: 0; line-height: 1.7; font-family: sans-serif;\">おめでとうございます！ 前半ステージの全59ページをすべて発見しました。<br>物語が大きく動き出す【後半ステージ】の公開を、楽しみにお待ちください。</p>\n            </div>\n\n         </div>\n",
         "yurikappeMessage": "めっちゃ観察されてるやん！",
         "pageScenarios": {
             "start": [
@@ -2249,7 +2253,7 @@ const pagesData = [
                     "next": "dontknow"
                 },
                 {
-                    "text": "とりあえずトップに戻ろう",
+                    "text": "【ヒント】このページで何か気になるところある？",
                     "next": "back"
                 }
             ],
@@ -2262,7 +2266,7 @@ const pagesData = [
                 "next": "start"
             },
             "back": {
-                "msg": "分かった。何か見つけたらすぐに教えてね！",
+                "msg": "うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…",
                 "next": "start"
             }
         }

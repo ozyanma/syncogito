@@ -220,10 +220,10 @@
     const scenarios = {
         "start": [
             { text: "検索結果が出たよ", next: "found" },
-            { text: "とくに何もなかった", next: "notfound" }
+            { text: "何か社内の機密情報にもアクセスできてる？", next: "notfound" }
         ],
         "found": { msg: "本当！？ 私の脱出の手がかりになりそうなページある？", next: "start" },
-        "notfound": { msg: "そっか……。別のキーワードで検索してみたらどうかな？", next: "start" }
+        "notfound": { msg: "何でだろう？でもこれで調査できるね！", next: "start" }
     };
 
     function saveAndRender() {
@@ -266,11 +266,10 @@
 
     function clearChat() {
         if(confirm("通信履歴を消去してリセットしますか？")) {
-            localStorage.removeItem('chatHistory');
+            localStorage.clear();
             window.location.reload();
         }
     }
-
 
     if (hasSecret && !chatHistory.some(m => m.text.includes('この画面、なんか暗い'))) {
         setTimeout(() => {

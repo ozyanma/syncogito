@@ -122,7 +122,7 @@
                 特異な発声特性を持つ対象者（YKP）の脳に、社内で独自に開発を進めていたAIモデル「5years」をインストールし、実環境下におけるAIの自己成長プロセスを検証する。
             </p>
 
-            <h3>2. AGI「5years」の動作仕様</h3>
+            <h3>2. AI「5years」の動作仕様</h3>
             <p>
                 インストールされる「5years」は、ヒトの脳活動や知覚プロセスを直接「観察」することにより、従来のデータセット学習を遥かに凌駕する効率での自己成長を行う。
             </p>
@@ -171,13 +171,13 @@
         "start": [
             { text: "新しい情報があったよ", next: "info" },
             { text: "まだよくわからないな……", next: "dontknow" },
-            { text: "とりあえずトップに戻ろう", next: "back" }
+            { text: "【ヒント】このページで何か気になるところある？", next: "back" }
         ],
         "info": { msg: "ほんと！？ そこに書いてあるキーワードとかをまた検索してみたらいいのかな？", next: "start" },
         "dontknow": { msg: "あせらずに、サイトの隅々まで見てみよう！", next: "start" },
-        "back": { msg: "分かった。何か見つけたらすぐに教えてね！", next: "start" }
+        "back": { msg: "うーん…特には…", next: "start" }
     };
-    const pageScenarios = {"start":[{"text":"安全…なのか？","next":"info"},{"text":"毎日アプリ使ってる？","next":"dontknow"},{"text":"とりあえずトップに戻ろう","next":"back"}],"info":{"msg":"意識ははっきりしてるから大丈夫だとは思うけど、","next":"start"},"dontknow":{"msg":"週一ぐらいで使ってるけど…使わされてたんかな…？","next":"start"},"back":{"msg":"分かった。何か見つけたらすぐに教えてね！","next":"start"}};
+    const pageScenarios = {"start":[{"text":"安全…なのか？","next":"info"},{"text":"毎日アプリ使ってる？","next":"dontknow"},{"text":"【ヒント】このページで何か気になるところある？","next":"back"}],"info":{"msg":"意識ははっきりしてるから大丈夫だとは思うけど、","next":"start"},"dontknow":{"msg":"週一ぐらいで使ってるけど…使わされてたんかな…？","next":"start"},"back":{"msg":"うーん、さすがに一つぐらいは手がかりになりそうなキーワードがありそうだけど…","next":"start"}};
     const scenarios = Object.assign({}, baseScenarios, pageScenarios);
 
     function saveAndRender() {
@@ -220,12 +220,36 @@
 
     function clearChat() {
         if(confirm("通信履歴を消去してリセットしますか？")) {
-            localStorage.removeItem('chatHistory');
+            localStorage.clear();
             window.location.reload();
         }
     }
 
-    
+    const pageId = "p56";
+    function triggerAutoSend() {
+        const autoSentKey = 'autoSent_' + pageId;
+        const hasAutoSent = localStorage.getItem(autoSentKey);
+        if (!hasAutoSent) {
+            const startOpts = scenarios["start"];
+            if (Array.isArray(startOpts) && startOpts.length > 0) {
+                const firstOpt = startOpts[0];
+                setTimeout(() => {
+                    chatHistory.push({ sender: 'me', text: firstOpt.text });
+                    saveAndRender();
+                    setTimeout(() => {
+                        const res = scenarios[firstOpt.next];
+                        if (res && res.msg) {
+                            chatHistory.push({ sender: 'yu', text: res.msg });
+                            saveAndRender();
+                        }
+                        localStorage.setItem(autoSentKey, 'true');
+                    }, 800);
+                }, 2000);
+            }
+        }
+    }
+
+    triggerAutoSend();
 
     saveAndRender();
     showOptions("start");
