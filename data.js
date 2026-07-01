@@ -1642,7 +1642,7 @@ const pagesData = [
     },
     {
         "id": "p44",
-        "searchKey": "パラメータ調整",
+        "searchKey": "パラメータ調整|AIのパラメータ調整",
         "title": "議事録AI調整ログ",
         "keywords": [
             "NISA"
